@@ -13,7 +13,7 @@
  * Plugin Name:       SAP Woo Suite Lite
  * Plugin URI:        https://replanta.dev/sap-woo-suite
  * Description:       Connect your WooCommerce store with SAP Business One. Sync stock and prices automatically. Upgrade to PRO for full product sync, orders, field mapping, and more.
- * Version:           1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Replanta Dev
