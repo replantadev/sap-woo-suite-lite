@@ -170,6 +170,35 @@ function sapwc_lite_load_dependencies() {
 add_action( 'plugins_loaded', 'sapwc_lite_load_dependencies' );
 
 /**
+ * Hide other plugin notices on SAP Woo Suite Lite admin pages.
+ *
+ * @since 1.0.0
+ */
+function sapwc_lite_hide_other_notices() {
+    $screen = get_current_screen();
+
+    // Our admin page IDs.
+    $our_pages = array(
+        'toplevel_page_sapwc-lite-settings',
+        'sap-woo-suite-lite_page_sapwc-lite-pro-features',
+    );
+
+    if ( $screen && in_array( $screen->id, $our_pages, true ) ) {
+        // Remove all admin notices.
+        remove_all_actions( 'admin_notices' );
+        remove_all_actions( 'all_admin_notices' );
+        remove_all_actions( 'user_admin_notices' );
+        remove_all_actions( 'network_admin_notices' );
+
+        // Re-add only our notices on PRO features page.
+        if ( 'sap-woo-suite-lite_page_sapwc-lite-pro-features' === $screen->id ) {
+            // No notices needed - the page has its own upsell CTA.
+        }
+    }
+}
+add_action( 'admin_head', 'sapwc_lite_hide_other_notices', 1 );
+
+/**
  * Display notice when WooCommerce is not active.
  *
  * @since 1.0.0
