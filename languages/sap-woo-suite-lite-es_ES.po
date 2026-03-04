@@ -414,3 +414,19 @@ msgstr "Permiso denegado."
 #: sap-woo-suite-lite.php
 msgid "SAP Woo Suite PRO is active. Lite version has been deactivated."
 msgstr "SAP Woo Suite PRO está activo. La versión Lite ha sido desactivada."
+
+#: admin/class-pro-features.php
+msgid "Ready to upgrade?"
+msgstr "¿Listo para actualizar?"
+
+#: admin/class-pro-features.php
+msgid "Get SAP Woo Suite PRO and connect your entire business workflow."
+msgstr "Obtén SAP Woo Suite PRO y conecta todo el flujo de trabajo de tu negocio."
+
+#: admin/class-pro-features.php
+msgid "View Pricing"
+msgstr "Ver precios"
+
+#: admin/class-pro-features.php
+msgid "Read Documentation"
+msgstr "Leer documentación"

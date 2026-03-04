@@ -159,12 +159,14 @@ class SAPWC_Lite_Pro_Features {
             <div class="sapwc-pro-cta">
                 <h3><?php esc_html_e( 'Ready to upgrade?', 'sap-woo-suite-lite' ); ?></h3>
                 <p><?php esc_html_e( 'Get SAP Woo Suite PRO and connect your entire business workflow.', 'sap-woo-suite-lite' ); ?></p>
-                <a href="https://replanta.dev/sap-woo-suite" target="_blank" class="button button-primary">
-                    <?php esc_html_e( 'View Pricing', 'sap-woo-suite-lite' ); ?>
-                </a>
-                <a href="https://replantadev.github.io/sapwoo/" target="_blank" class="button">
-                    <?php esc_html_e( 'Read Documentation', 'sap-woo-suite-lite' ); ?>
-                </a>
+                <div class="sapwc-cta-buttons">
+                    <a href="https://replanta.dev/sap-woo-suite" target="_blank" class="button-cta-primary">
+                        <?php esc_html_e( 'View Pricing', 'sap-woo-suite-lite' ); ?>
+                    </a>
+                    <a href="https://replantadev.github.io/sapwoo/" target="_blank" class="button-cta-secondary">
+                        <?php esc_html_e( 'Read Documentation', 'sap-woo-suite-lite' ); ?>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -269,21 +271,75 @@ class SAPWC_Lite_Pro_Features {
             }
 
             .sapwc-pro-cta {
-                background: #f5f5f5;
-                border-radius: 8px;
-                padding: 30px;
+                background: linear-gradient(135deg, #1e2f23 0%, #2a3f30 100%);
+                border-radius: 12px;
+                padding: 40px;
                 text-align: center;
-                margin-top: 20px;
+                margin-top: 30px;
+                border: 2px solid #93f1c9;
+                position: relative;
+                overflow: hidden;
+            }
+            .sapwc-pro-cta::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle, rgba(147, 241, 201, 0.1) 0%, transparent 70%);
+                pointer-events: none;
             }
             .sapwc-pro-cta h3 {
-                margin: 0 0 8px;
+                margin: 0 0 12px;
+                color: #93f1c9;
+                font-size: 24px;
+                font-weight: 600;
             }
             .sapwc-pro-cta p {
-                margin: 0 0 20px;
-                color: #666;
+                margin: 0 0 24px;
+                color: #fff;
+                font-size: 16px;
+                opacity: 0.9;
             }
-            .sapwc-pro-cta .button {
-                margin: 0 5px;
+            .sapwc-pro-cta .sapwc-cta-buttons {
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .sapwc-pro-cta .button-cta-primary {
+                background: #41999f;
+                color: #fff;
+                border: none;
+                padding: 12px 28px;
+                font-size: 15px;
+                font-weight: 600;
+                border-radius: 6px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(65, 153, 159, 0.3);
+            }
+            .sapwc-pro-cta .button-cta-primary:hover {
+                background: #357a7f;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(65, 153, 159, 0.4);
+                color: #fff;
+            }
+            .sapwc-pro-cta .button-cta-secondary {
+                background: transparent;
+                color: #93f1c9;
+                border: 2px solid #93f1c9;
+                padding: 10px 26px;
+                font-size: 15px;
+                font-weight: 600;
+                border-radius: 6px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+            .sapwc-pro-cta .button-cta-secondary:hover {
+                background: #93f1c9;
+                color: #1e2f23;
             }
         </style>
         <?php

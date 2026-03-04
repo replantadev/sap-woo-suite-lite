@@ -400,6 +400,22 @@ msgstr ""
 msgid "Basic logs"
 msgstr ""
 
+#: admin/class-pro-features.php
+msgid "Ready to upgrade?"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Get SAP Woo Suite PRO and connect your entire business workflow."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "View Pricing"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Read Documentation"
+msgstr ""
+
 #: includes/class-stock-sync.php
 msgid "No SAP connection configured"
 msgstr ""
