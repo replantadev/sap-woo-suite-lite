@@ -33,10 +33,11 @@ class SAPWC_Lite_Stock_Sync
      */
     public static function maybe_schedule_cron()
     {
-        $auto_sync = get_option('sapwc_lite_auto_sync', '0') === '1';
-        $interval = get_option('sapwc_lite_sync_interval', 'hourly');
+        // Use PRO-compatible option names
+        $sync_stock = get_option('sapwc_sync_stock_auto', '1') === '1';
+        $interval = get_option('sapwc_stock_sync_interval', 'hourly');
 
-        if ($auto_sync) {
+        if ($sync_stock) {
             if (!wp_next_scheduled('sapwc_lite_cron_sync')) {
                 wp_schedule_event(time() + 60, $interval, 'sapwc_lite_cron_sync');
             }
@@ -74,11 +75,11 @@ class SAPWC_Lite_Stock_Sync
             return false;
         }
 
-        // Get sync settings
-        $tariff = get_option('sapwc_lite_price_list', '');
-        $warehouses = get_option('sapwc_lite_warehouses', []);
-        $sync_stock = get_option('sapwc_lite_sync_stock', '1') === '1';
-        $sync_prices = get_option('sapwc_lite_sync_prices', '1') === '1';
+        // Get sync settings (PRO-compatible option names)
+        $tariff = get_option('sapwc_selected_tariff', '');
+        $warehouses = get_option('sapwc_selected_warehouses', []);
+        $sync_stock = get_option('sapwc_sync_stock_auto', '1') === '1';
+        $sync_prices = get_option('sapwc_sync_prices_auto', '1') === '1';
 
         if (empty($tariff) || empty($warehouses)) {
             $msg = 'Missing configuration: select a price list and at least one warehouse.';
@@ -176,7 +177,8 @@ class SAPWC_Lite_Stock_Sync
 
         $client->logout();
 
-        update_option('sapwc_lite_last_sync', current_time('mysql'));
+        // Use PRO-compatible option name
+        update_option('sapwc_stock_last_sync', current_time('mysql'));
 
         $msg = "Sync completed: $updated products updated, $skipped skipped.";
         SAPWC_Lite_Logger::log(0, 'sync', 'success', $msg);
@@ -187,7 +189,7 @@ class SAPWC_Lite_Stock_Sync
                 'message'   => $msg,
                 'updated'   => $updated,
                 'skipped'   => $skipped,
-                'last_sync' => get_option('sapwc_lite_last_sync')
+                'last_sync' => get_option('sapwc_stock_last_sync')
             ];
         }
 

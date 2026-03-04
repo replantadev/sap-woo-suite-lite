@@ -2,6 +2,8 @@
 /**
  * Simple Logger for SAP Woo Suite Lite
  *
+ * Uses same table structure as PRO version (sapwc_logs) for seamless upgrade.
+ *
  * @package SAPWC_Lite
  * @since 1.0.0
  */
@@ -12,10 +14,12 @@ if (!defined('ABSPATH')) {
 
 class SAPWC_Lite_Logger
 {
-    const TABLE_NAME = 'sapwc_lite_logs';
+    // Use same table name as PRO for compatibility
+    const TABLE_NAME = 'sapwc_logs';
 
     /**
      * Create logs table on plugin activation
+     * Uses same structure as PRO version
      */
     public static function create_table()
     {
@@ -23,17 +27,18 @@ class SAPWC_Lite_Logger
         $table = $wpdb->prefix . self::TABLE_NAME;
         $charset = $wpdb->get_charset_collate();
 
+        // Same table structure as PRO version
         $sql = "CREATE TABLE IF NOT EXISTS $table (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             order_id BIGINT UNSIGNED DEFAULT 0,
-            context VARCHAR(50) NOT NULL,
-            level VARCHAR(20) NOT NULL,
+            action VARCHAR(50) NOT NULL,
+            status VARCHAR(20) NOT NULL,
             message TEXT NOT NULL,
-            sap_ref VARCHAR(100) DEFAULT NULL,
+            docentry BIGINT UNSIGNED DEFAULT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             INDEX idx_order (order_id),
-            INDEX idx_context (context),
-            INDEX idx_level (level),
+            INDEX idx_action (action),
+            INDEX idx_status (status),
             INDEX idx_created (created_at)
         ) $charset;";
 
@@ -42,9 +47,15 @@ class SAPWC_Lite_Logger
     }
 
     /**
-     * Log a message
+     * Log a message - compatible with PRO version
+     *
+     * @param int    $order_id Order ID (0 for non-order actions)
+     * @param string $action   Action type (stock_sync, price_sync, connection, etc.)
+     * @param string $status   Status (success, error, warning, info)
+     * @param string $message  Log message
+     * @param int    $docentry SAP DocEntry reference
      */
-    public static function log($order_id, $context, $level, $message, $sap_ref = null)
+    public static function log($order_id, $action, $status, $message, $docentry = null)
     {
         global $wpdb;
         $table = $wpdb->prefix . self::TABLE_NAME;
@@ -55,39 +66,44 @@ class SAPWC_Lite_Logger
         }
 
         $wpdb->insert($table, [
-            'order_id'   => (int) $order_id,
-            'context'    => sanitize_text_field($context),
-            'level'      => sanitize_text_field($level),
+            'order_id'   => is_numeric($order_id) ? (int) $order_id : 0,
+            'action'     => sanitize_text_field($action),
+            'status'     => sanitize_text_field($status),
             'message'    => sanitize_textarea_field($message),
-            'sap_ref'    => $sap_ref ? sanitize_text_field($sap_ref) : null,
+            'docentry'   => is_numeric($docentry) ? (int) $docentry : null,
             'created_at' => current_time('mysql')
-        ], ['%d', '%s', '%s', '%s', '%s', '%s']);
+        ], ['%d', '%s', '%s', '%s', '%d', '%s']);
 
         // Also log to error_log in debug mode
         if (defined('WP_DEBUG') && WP_DEBUG) {
-            error_log("[SAPWC Lite] [$context] [$level] $message");
+            error_log("[SAPWC Lite] [$action] [$status] $message");
         }
     }
 
     /**
      * Get recent logs
      */
-    public static function get_logs($limit = 100, $context = null, $level = null)
+    public static function get_logs($limit = 100, $action = null, $status = null)
     {
         global $wpdb;
         $table = $wpdb->prefix . self::TABLE_NAME;
 
+        // Check if table exists
+        if ($wpdb->get_var("SHOW TABLES LIKE '$table'") !== $table) {
+            return [];
+        }
+
         $where = ['1=1'];
         $values = [];
 
-        if ($context) {
-            $where[] = 'context = %s';
-            $values[] = $context;
+        if ($action) {
+            $where[] = 'action = %s';
+            $values[] = $action;
         }
 
-        if ($level) {
-            $where[] = 'level = %s';
-            $values[] = $level;
+        if ($status) {
+            $where[] = 'status = %s';
+            $values[] = $status;
         }
 
         $where_sql = implode(' AND ', $where);
@@ -120,6 +136,7 @@ class SAPWC_Lite_Logger
 
     /**
      * Drop table on uninstall
+     * Note: Only called if PRO is not installed (checked in uninstall.php)
      */
     public static function drop_table()
     {

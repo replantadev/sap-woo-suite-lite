@@ -48,10 +48,29 @@ add_action('admin_init', function () {
     if (is_plugin_active('sap-woo-suite/sap-woo-suite.php')) {
         deactivate_plugins(SAPWC_LITE_BASENAME);
         add_action('admin_notices', function () {
-            echo '<div class="notice notice-warning is-dismissible">';
-            echo '<p><strong>SAP Woo Suite Lite</strong> has been deactivated. You already have the PRO version active.</p>';
+            echo '<div class="notice notice-success is-dismissible">';
+            echo '<p><strong>SAP Woo Suite Lite</strong> has been deactivated. ';
+            echo 'You have the PRO version active - all your settings have been preserved!</p>';
             echo '</div>';
         });
+    }
+});
+
+// Also check on plugin activation
+register_activation_hook(__FILE__, function () {
+    if (is_plugin_active('sap-woo-suite/sap-woo-suite.php')) {
+        deactivate_plugins(SAPWC_LITE_BASENAME);
+        wp_die(
+            'SAP Woo Suite PRO is already active. The Lite version is not needed - your settings will work with PRO.',
+            'Plugin Activation Error',
+            ['back_link' => true]
+        );
+    }
+    
+    // Initialize connection array if not exists (PRO-compatible format)
+    if (get_option('sapwc_connections') === false) {
+        update_option('sapwc_connections', []);
+        update_option('sapwc_connection_index', 0);
     }
 });
 
@@ -110,27 +129,30 @@ add_filter('plugin_action_links_' . SAPWC_LITE_BASENAME, function ($links) {
 });
 
 // ──────────────────────────────────────────────
-// Helper: Get active SAP connection
+// Helper: Get active SAP connection (PRO-compatible)
+// Uses same option names as PRO for seamless upgrade
 // ──────────────────────────────────────────────
 function sapwc_lite_get_connection()
 {
-    $url  = get_option('sapwc_lite_sap_url', '');
-    $user = get_option('sapwc_lite_sap_user', '');
-    $pass = get_option('sapwc_lite_sap_pass', '');
-    $db   = get_option('sapwc_lite_sap_db', '');
-    $ssl  = get_option('sapwc_lite_sap_ssl', '0') === '1';
+    $connections = get_option('sapwc_connections', []);
+    $index = get_option('sapwc_connection_index', 0);
 
-    if (empty($url) || empty($user) || empty($pass) || empty($db)) {
-        return false;
+    if (!isset($connections[$index])) {
+        return null;
     }
 
-    return [
-        'url'  => rtrim($url, '/'),
-        'user' => $user,
-        'pass' => $pass,
-        'db'   => $db,
-        'ssl'  => $ssl
-    ];
+    $conn = $connections[$index];
+
+    // Ensure SSL field exists
+    if (!isset($conn['ssl'])) {
+        $conn['ssl'] = false;
+    }
+
+    if (empty($conn['url']) || empty($conn['user']) || empty($conn['pass']) || empty($conn['db'])) {
+        return null;
+    }
+
+    return $conn;
 }
 
 // ──────────────────────────────────────────────
