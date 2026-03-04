@@ -1,0 +1,148 @@
+/**
+ * SAP Woo Suite Lite - Admin Styles
+ */
+
+.sapwc-lite-wrap {
+    max-width: 1200px;
+}
+
+.sapwc-lite-logo {
+    font-weight: 600;
+}
+
+.sapwc-lite-version {
+    font-size: 12px;
+    font-weight: normal;
+    color: #666;
+    margin-left: 8px;
+}
+
+/* PRO Banner */
+.sapwc-lite-pro-banner {
+    background: linear-gradient(135deg, #41999f 0%, #357a7f 100%);
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.sapwc-lite-pro-content strong {
+    display: block;
+    font-size: 14px;
+}
+
+.sapwc-lite-pro-content p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.sapwc-lite-pro-banner .button-primary {
+    background: #fff;
+    color: #41999f;
+    border: none;
+    font-weight: 600;
+}
+
+.sapwc-lite-pro-banner .button-primary:hover {
+    background: #f0f0f0;
+    color: #357a7f;
+}
+
+/* Tabs */
+.sapwc-lite-content {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-top: none;
+    padding: 24px;
+    margin-top: -1px;
+}
+
+/* Form Tables */
+.sapwc-lite-content .form-table th {
+    padding-left: 0;
+    width: 200px;
+}
+
+.sapwc-lite-content .form-table input[type="text"],
+.sapwc-lite-content .form-table input[type="url"],
+.sapwc-lite-content .form-table input[type="password"] {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Buttons */
+#sapwc-lite-test-connection,
+#sapwc-lite-sync-now {
+    margin-left: 8px;
+}
+
+#sapwc-lite-test-result,
+#sapwc-lite-sync-result {
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+#sapwc-lite-test-result.success,
+#sapwc-lite-sync-result.success {
+    color: #00a32a;
+}
+
+#sapwc-lite-test-result.error,
+#sapwc-lite-sync-result.error {
+    color: #dc3545;
+}
+
+/* Logs */
+.sapwc-lite-level-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.sapwc-lite-level-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.sapwc-lite-level-warning {
+    background: #fff3cd;
+    color: #856404;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+.sapwc-lite-level-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+/* Loading spinner */
+.sapwc-lite-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #41999f;
+    border-radius: 50%;
+    animation: sapwc-lite-spin 1s linear infinite;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@keyframes sapwc-lite-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
