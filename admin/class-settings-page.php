@@ -349,6 +349,13 @@ class SAPWC_Lite_Settings_Page {
         endif;
         ?>
 
+        <div class="notice notice-info" style="margin:15px 0;padding:12px 15px;">
+            <p style="margin:0;">
+                <strong><?php esc_html_e( 'How it works:', 'sap-woo-suite-lite' ); ?></strong>
+                <?php esc_html_e( 'Products are matched by SKU. The WooCommerce product SKU must match the SAP ItemCode exactly.', 'sap-woo-suite-lite' ); ?>
+            </p>
+        </div>
+
         <form method="post" action="">
             <?php wp_nonce_field( 'sapwc_lite_settings_nonce' ); ?>
             <input type="hidden" name="sapwc_lite_save" value="1">

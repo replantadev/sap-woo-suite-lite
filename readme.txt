@@ -5,11 +5,11 @@ Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Connect WooCommerce with SAP Business One. Sync stock and prices automatically via Service Layer API.
+Connect WooCommerce with SAP Business One. Sync stock and prices automatically via Service Layer API. Products are matched by SKU (WooCommerce SKU = SAP ItemCode).
 
 == Description ==
 
@@ -95,6 +95,11 @@ You can choose hourly, twice daily, or daily automatic sync. Manual sync is alwa
 
 == Changelog ==
 
+= 1.0.1 - 2026-03-04 =
+* Added SKU matching info in sync settings UI
+* Hide other plugin notices on our admin pages
+* Fixed version constant mismatch
+
 = 1.0.0 - 2026-03-04 =
 * Initial release
 * Stock sync from SAP warehouses
@@ -104,6 +109,9 @@ You can choose hourly, twice daily, or daily automatic sync. Manual sync is alwa
 * PRO features preview page
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Added SKU matching info and UI improvements.
 
 = 1.0.0 =
 Initial release. Connect your WooCommerce store with SAP Business One.
