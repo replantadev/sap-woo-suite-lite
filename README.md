@@ -36,7 +36,7 @@
 
 ### ¿Necesitas más?
 
-Actualiza a [SAP Woo Suite PRO](https://replanta.net/sap-woo-suite-pro/) para:
+Actualiza a [SAP Woo Suite PRO](https://replanta.net/conector-sap-woocommerce/) para:
 
 - Importación completa de productos desde SAP
 - Sincronización de pedidos a SAP
