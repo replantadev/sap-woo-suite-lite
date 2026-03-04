@@ -98,7 +98,7 @@ Actualiza a [SAP Woo Suite PRO](https://replanta.net/sap-woo-suite-pro/) para:
 
 ## Soporte
 
-- **Email**: info@replanta.dev
+- **Email**: info@replanta.net
 - **GitHub**: [Issues](https://github.com/replantadev/sap-woo-suite-lite/issues)
 
 ---

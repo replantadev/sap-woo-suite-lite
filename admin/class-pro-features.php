@@ -129,7 +129,7 @@ class SAPWC_Lite_Pro_Features {
                     );
                     ?>
                 </p>
-                <a href="https://replanta.dev/sap-woo-suite" target="_blank" class="button button-primary button-hero">
+                <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" class="button button-primary button-hero">
                     <?php esc_html_e( 'Get SAP Woo Suite PRO', 'sap-woo-suite-lite' ); ?>
                 </a>
             </div>
@@ -160,7 +160,7 @@ class SAPWC_Lite_Pro_Features {
                 <h3><?php esc_html_e( 'Ready to upgrade?', 'sap-woo-suite-lite' ); ?></h3>
                 <p><?php esc_html_e( 'Get SAP Woo Suite PRO and connect your entire business workflow.', 'sap-woo-suite-lite' ); ?></p>
                 <div class="sapwc-cta-buttons">
-                    <a href="https://replanta.dev/sap-woo-suite" target="_blank" class="button-cta-primary">
+                    <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" class="button-cta-primary">
                         <?php esc_html_e( 'View Pricing', 'sap-woo-suite-lite' ); ?>
                     </a>
                     <a href="https://replantadev.github.io/sapwoo/" target="_blank" class="button-cta-secondary">

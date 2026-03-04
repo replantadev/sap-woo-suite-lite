@@ -198,7 +198,7 @@ class SAPWC_Lite_Settings_Page {
                     <strong><?php esc_html_e( 'Unlock Full Power with PRO', 'sap-woo-suite-lite' ); ?></strong>
                     <p><?php esc_html_e( 'Sync products, orders, customers, field mapping, REST API, and more.', 'sap-woo-suite-lite' ); ?></p>
                 </div>
-                <a href="https://replanta.dev/sap-woo-suite" target="_blank" class="button button-primary">
+                <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" class="button button-primary">
                     <?php esc_html_e( 'Upgrade to PRO', 'sap-woo-suite-lite' ); ?>
                 </a>
             </div>

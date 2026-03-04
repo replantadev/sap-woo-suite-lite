@@ -11,13 +11,13 @@
  *
  * @wordpress-plugin
  * Plugin Name:       SAP Woo Suite Lite
- * Plugin URI:        https://replanta.dev/sap-woo-suite
+ * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Sync stock and prices automatically. Upgrade to PRO for full product sync, orders, field mapping, and more.
- * Version: 1.0.1
+ * Version: 1.0.3
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Replanta Dev
- * Author URI:        https://replanta.dev
+ * Author URI:        https://replanta.net
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       sap-woo-suite-lite
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ──────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────
-define( 'SAPWC_LITE_VERSION', '1.0.1' );
+define( 'SAPWC_LITE_VERSION', '1.0.2' );
 define( 'SAPWC_LITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SAPWC_LITE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SAPWC_LITE_FILE', __FILE__ );
@@ -230,7 +230,7 @@ function sapwc_lite_plugin_action_links( $links ) {
 
     $pro_link = sprintf(
         '<a href="%s" target="_blank" style="color:#41999f;font-weight:bold;">%s</a>',
-        esc_url( 'https://replanta.dev/sap-woo-suite' ),
+        esc_url( 'https://replanta.net/conector-sap-woocommerce/' ),
         esc_html__( 'Upgrade to PRO', 'sap-woo-suite-lite' )
     );
 
