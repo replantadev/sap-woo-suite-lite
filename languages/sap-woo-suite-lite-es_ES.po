@@ -1,0 +1,416 @@
+# Spanish (Spain) translation for SAP Woo Suite Lite
+# Copyright (C) 2024 Replanta
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SAP Woo Suite Lite 1.0.0\n"
+"Report-Msgid-Bugs-To: https://replanta.dev/support\n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: Replanta <info@replanta.dev>\n"
+"Language-Team: Spanish <info@replanta.dev>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Suite Lite"
+msgstr "SAP Woo Suite Lite"
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Lite"
+msgstr "SAP Woo Lite"
+
+#: admin/class-settings-page.php
+msgid "Settings"
+msgstr "Ajustes"
+
+#: admin/class-settings-page.php
+msgid "Logs"
+msgstr "Registros"
+
+#: admin/class-settings-page.php
+msgid "Connection settings saved."
+msgstr "Configuración de conexión guardada."
+
+#: admin/class-settings-page.php
+msgid "Sync settings saved."
+msgstr "Configuración de sincronización guardada."
+
+#: admin/class-settings-page.php
+msgid "Testing..."
+msgstr "Probando..."
+
+#: admin/class-settings-page.php
+msgid "Connected!"
+msgstr "¡Conectado!"
+
+#: admin/class-settings-page.php
+msgid "Connection failed"
+msgstr "Conexión fallida"
+
+#: admin/class-settings-page.php
+msgid "Request failed"
+msgstr "Solicitud fallida"
+
+#: admin/class-settings-page.php
+msgid "Syncing..."
+msgstr "Sincronizando..."
+
+#: admin/class-settings-page.php
+msgid "products updated"
+msgstr "productos actualizados"
+
+#: admin/class-settings-page.php
+msgid "Sync failed"
+msgstr "Sincronización fallida"
+
+#: admin/class-settings-page.php
+msgid "Unlock Full Power with PRO"
+msgstr "Desbloquea todo el potencial con PRO"
+
+#: admin/class-settings-page.php
+msgid "Sync products, orders, customers, field mapping, REST API, and more."
+msgstr "Sincroniza productos, pedidos, clientes, mapeo de campos, API REST y más."
+
+#: admin/class-settings-page.php
+msgid "Upgrade to PRO"
+msgstr "Actualizar a PRO"
+
+#: admin/class-settings-page.php
+msgid "Connection"
+msgstr "Conexión"
+
+#: admin/class-settings-page.php
+msgid "Sync Settings"
+msgstr "Ajustes de sincronización"
+
+#: admin/class-settings-page.php
+msgid "Service Layer URL"
+msgstr "URL del Service Layer"
+
+#: admin/class-settings-page.php
+msgid "SAP Business One Service Layer URL (without /b1s/v1)"
+msgstr "URL del Service Layer de SAP Business One (sin /b1s/v1)"
+
+#: admin/class-settings-page.php
+msgid "Username"
+msgstr "Usuario"
+
+#: admin/class-settings-page.php
+msgid "Password"
+msgstr "Contraseña"
+
+#: admin/class-settings-page.php
+msgid "Company Database"
+msgstr "Base de datos de empresa"
+
+#: admin/class-settings-page.php
+msgid "SSL Verification"
+msgstr "Verificación SSL"
+
+#: admin/class-settings-page.php
+msgid "Verify SSL certificate (recommended for production)"
+msgstr "Verificar certificado SSL (recomendado en producción)"
+
+#: admin/class-settings-page.php
+msgid "Save Connection"
+msgstr "Guardar conexión"
+
+#: admin/class-settings-page.php
+msgid "Test Connection"
+msgstr "Probar conexión"
+
+#: admin/class-settings-page.php
+msgid "Configure your SAP connection first"
+msgstr "Configura tu conexión SAP primero"
+
+#: admin/class-settings-page.php
+msgid "before setting up sync options."
+msgstr "antes de configurar las opciones de sincronización."
+
+#: admin/class-settings-page.php
+msgid "Sync Configuration"
+msgstr "Configuración de sincronización"
+
+#: admin/class-settings-page.php
+msgid "Price List"
+msgstr "Lista de precios"
+
+#: admin/class-settings-page.php
+msgid "-- Select Price List --"
+msgstr "-- Seleccionar lista de precios --"
+
+#: admin/class-settings-page.php
+msgid "Could not load price lists. Check your connection."
+msgstr "No se pudieron cargar las listas de precios. Revisa tu conexión."
+
+#: admin/class-settings-page.php
+msgid "Warehouses"
+msgstr "Almacenes"
+
+#: admin/class-settings-page.php
+msgid "Connect to SAP to load warehouses."
+msgstr "Conecta con SAP para cargar los almacenes."
+
+#: admin/class-settings-page.php
+msgid "What to Sync"
+msgstr "Qué sincronizar"
+
+#: admin/class-settings-page.php
+msgid "Sync Stock"
+msgstr "Sincronizar stock"
+
+#: admin/class-settings-page.php
+msgid "Update WooCommerce stock quantities from SAP"
+msgstr "Actualizar cantidades de stock en WooCommerce desde SAP"
+
+#: admin/class-settings-page.php
+msgid "Sync Prices"
+msgstr "Sincronizar precios"
+
+#: admin/class-settings-page.php
+msgid "Update WooCommerce prices from SAP price list"
+msgstr "Actualizar precios en WooCommerce desde la lista de precios de SAP"
+
+#: admin/class-settings-page.php
+msgid "Automatic Sync"
+msgstr "Sincronización automática"
+
+#: admin/class-settings-page.php
+msgid "Sync Interval"
+msgstr "Intervalo de sincronización"
+
+#: admin/class-settings-page.php
+msgid "Every Hour"
+msgstr "Cada hora"
+
+#: admin/class-settings-page.php
+msgid "Twice Daily"
+msgstr "Dos veces al día"
+
+#: admin/class-settings-page.php
+msgid "Daily"
+msgstr "Diariamente"
+
+#: admin/class-settings-page.php
+msgid "Automatic sync runs via WP-Cron when stock sync is enabled."
+msgstr "La sincronización automática se ejecuta vía WP-Cron cuando la sincronización de stock está activada."
+
+#: admin/class-settings-page.php
+msgid "Last Sync"
+msgstr "Última sincronización"
+
+#: admin/class-settings-page.php
+msgid "Never"
+msgstr "Nunca"
+
+#: admin/class-settings-page.php
+msgid "Save Sync Settings"
+msgstr "Guardar ajustes de sincronización"
+
+#: admin/class-settings-page.php
+msgid "Sync Now"
+msgstr "Sincronizar ahora"
+
+#: admin/class-settings-page.php
+msgid "PRO Features Available"
+msgstr "Funciones PRO disponibles"
+
+#: admin/class-settings-page.php
+msgid "Full Product Import"
+msgstr "Importación completa de productos"
+
+#: admin/class-settings-page.php
+msgid "Import products from SAP with images, attributes, variations"
+msgstr "Importa productos de SAP con imágenes, atributos y variaciones"
+
+#: admin/class-settings-page.php
+msgid "Order Sync"
+msgstr "Sincronización de pedidos"
+
+#: admin/class-settings-page.php
+msgid "Automatically send orders to SAP as Sales Orders"
+msgstr "Envía automáticamente pedidos a SAP como Pedidos de Venta"
+
+#: admin/class-settings-page.php
+msgid "Customer Sync"
+msgstr "Sincronización de clientes"
+
+#: admin/class-settings-page.php
+msgid "Create Business Partners from WooCommerce customers"
+msgstr "Crea Business Partners desde clientes de WooCommerce"
+
+#: admin/class-settings-page.php
+msgid "Field Mapping"
+msgstr "Mapeo de campos"
+
+#: admin/class-settings-page.php
+msgid "Map any SAP field to WooCommerce attributes"
+msgstr "Mapea cualquier campo de SAP a atributos de WooCommerce"
+
+#: admin/class-settings-page.php
+msgid "REST API"
+msgstr "API REST"
+
+#: admin/class-settings-page.php
+msgid "External integrations and webhooks"
+msgstr "Integraciones externas y webhooks"
+
+#: admin/class-settings-page.php
+msgid "Multi-channel"
+msgstr "Multicanal"
+
+#: admin/class-settings-page.php
+msgid "TikTok Shop, Amazon, Miravia integrations"
+msgstr "Integraciones con TikTok Shop, Amazon, Miravia"
+
+#: admin/class-settings-page.php
+msgid "See All PRO Features"
+msgstr "Ver todas las funciones PRO"
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Suite Lite - Logs"
+msgstr "SAP Woo Suite Lite - Registros"
+
+#: admin/class-settings-page.php
+msgid "Date"
+msgstr "Fecha"
+
+#: admin/class-settings-page.php
+msgid "Action"
+msgstr "Acción"
+
+#: admin/class-settings-page.php
+msgid "Status"
+msgstr "Estado"
+
+#: admin/class-settings-page.php
+msgid "Message"
+msgstr "Mensaje"
+
+#: admin/class-settings-page.php
+msgid "No logs yet."
+msgstr "Sin registros aún."
+
+#: admin/class-pro-features.php
+msgid "Unlock the Full Power of SAP Woo Suite"
+msgstr "Desbloquea todo el potencial de SAP Woo Suite"
+
+#: admin/class-pro-features.php
+msgid "You're using the Lite version with stock and price sync. Upgrade to PRO for complete SAP Business One integration."
+msgstr "Estás usando la versión Lite con sincronización de stock y precios. Actualiza a PRO para una integración completa con SAP Business One."
+
+#: admin/class-pro-features.php
+msgid "Get SAP Woo Suite PRO"
+msgstr "Obtener SAP Woo Suite PRO"
+
+#: admin/class-pro-features.php
+msgid "Full Product Sync"
+msgstr "Sincronización completa de productos"
+
+#: admin/class-pro-features.php
+msgid "Import products from SAP to WooCommerce with full attribute mapping, images, categories, and variations."
+msgstr "Importa productos de SAP a WooCommerce con mapeo completo de atributos, imágenes, categorías y variaciones."
+
+#: admin/class-pro-features.php
+msgid "Stock & prices only"
+msgstr "Solo stock y precios"
+
+#: admin/class-pro-features.php
+msgid "Order Sync to SAP"
+msgstr "Sincronización de pedidos a SAP"
+
+#: admin/class-pro-features.php
+msgid "Automatically send WooCommerce orders to SAP Business One as Sales Orders with full line item details."
+msgstr "Envía automáticamente pedidos de WooCommerce a SAP Business One como Pedidos de Venta con todos los detalles de líneas."
+
+#: admin/class-pro-features.php
+msgid "Not available"
+msgstr "No disponible"
+
+#: admin/class-pro-features.php
+msgid "Create and update Business Partners in SAP from WooCommerce customers with address synchronization."
+msgstr "Crea y actualiza Business Partners en SAP desde clientes de WooCommerce con sincronización de direcciones."
+
+#: admin/class-pro-features.php
+msgid "Category Import"
+msgstr "Importación de categorías"
+
+#: admin/class-pro-features.php
+msgid "Import SAP item groups as WooCommerce categories with hierarchy support."
+msgstr "Importa grupos de artículos de SAP como categorías de WooCommerce con soporte de jerarquía."
+
+#: admin/class-pro-features.php
+msgid "Advanced Field Mapping"
+msgstr "Mapeo avanzado de campos"
+
+#: admin/class-pro-features.php
+msgid "Map any SAP field to WooCommerce product attributes, including UDFs and custom fields."
+msgstr "Mapea cualquier campo de SAP a atributos de productos de WooCommerce, incluyendo UDFs y campos personalizados."
+
+#: admin/class-pro-features.php
+msgid "REST API Endpoints"
+msgstr "Endpoints de API REST"
+
+#: admin/class-pro-features.php
+msgid "Expose API endpoints for external integrations, webhooks, and automation workflows."
+msgstr "Expone endpoints de API para integraciones externas, webhooks y flujos de automatización."
+
+#: admin/class-pro-features.php
+msgid "Multi-channel Support"
+msgstr "Soporte multicanal"
+
+#: admin/class-pro-features.php
+msgid "Connect TikTok Shop, Amazon, Miravia, and other marketplaces via SAP Woo Suite addons."
+msgstr "Conecta TikTok Shop, Amazon, Miravia y otros marketplaces mediante addons de SAP Woo Suite."
+
+#: admin/class-pro-features.php
+msgid "Auto-retry Failed Orders"
+msgstr "Reintento automático de pedidos fallidos"
+
+#: admin/class-pro-features.php
+msgid "Intelligent retry system with exponential backoff for failed SAP orders."
+msgstr "Sistema de reintento inteligente con backoff exponencial para pedidos fallidos en SAP."
+
+#: admin/class-pro-features.php
+msgid "Multiple Warehouses per Product"
+msgstr "Múltiples almacenes por producto"
+
+#: admin/class-pro-features.php
+msgid "Assign different warehouses to different products with warehouse-specific tariffs."
+msgstr "Asigna diferentes almacenes a diferentes productos con tarifas específicas por almacén."
+
+#: admin/class-pro-features.php
+msgid "Global warehouse only"
+msgstr "Solo almacén global"
+
+#: admin/class-pro-features.php
+msgid "Detailed Logging & Analytics"
+msgstr "Registros detallados y analíticas"
+
+#: admin/class-pro-features.php
+msgid "Comprehensive logs with filtering, export, and sync statistics dashboard."
+msgstr "Registros completos con filtrado, exportación y panel de estadísticas de sincronización."
+
+#: admin/class-pro-features.php
+msgid "Basic logs"
+msgstr "Registros básicos"
+
+#: includes/class-stock-sync.php
+msgid "No SAP connection configured"
+msgstr "No hay conexión SAP configurada"
+
+#: includes/class-stock-sync.php
+msgid "All fields are required."
+msgstr "Todos los campos son obligatorios."
+
+#: includes/class-stock-sync.php
+msgid "Permission denied."
+msgstr "Permiso denegado."
+
+#: sap-woo-suite-lite.php
+msgid "SAP Woo Suite PRO is active. Lite version has been deactivated."
+msgstr "SAP Woo Suite PRO está activo. La versión Lite ha sido desactivada."

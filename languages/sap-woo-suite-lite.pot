@@ -1,0 +1,417 @@
+# Copyright (C) 2024 Replanta
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SAP Woo Suite Lite 1.0.0\n"
+"Report-Msgid-Bugs-To: https://replanta.dev/support\n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: Replanta <info@replanta.dev>\n"
+"Language-Team: Replanta <info@replanta.dev>\n"
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Suite Lite"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Lite"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Settings"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Logs"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Connection settings saved."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync settings saved."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Testing..."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Connected!"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Connection failed"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Request failed"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Syncing..."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "products updated"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync failed"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Unlock Full Power with PRO"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync products, orders, customers, field mapping, REST API, and more."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Upgrade to PRO"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Connection"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Settings"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Service Layer URL"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "SAP Business One Service Layer URL (without /b1s/v1)"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Username"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Password"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Company Database"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "SSL Verification"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Verify SSL certificate (recommended for production)"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Save Connection"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Test Connection"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Configure your SAP connection first"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "before setting up sync options."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Configuration"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Price List"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "-- Select Price List --"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Could not load price lists. Check your connection."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Warehouses"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Connect to SAP to load warehouses."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "What to Sync"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Stock"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Update WooCommerce stock quantities from SAP"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Prices"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Update WooCommerce prices from SAP price list"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Automatic Sync"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Interval"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Every Hour"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Twice Daily"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Daily"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Automatic sync runs via WP-Cron when stock sync is enabled."
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Last Sync"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Never"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Save Sync Settings"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Sync Now"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "PRO Features Available"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Full Product Import"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Import products from SAP with images, attributes, variations"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Order Sync"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Automatically send orders to SAP as Sales Orders"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Customer Sync"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Create Business Partners from WooCommerce customers"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Field Mapping"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Map any SAP field to WooCommerce attributes"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "REST API"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "External integrations and webhooks"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Multi-channel"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "TikTok Shop, Amazon, Miravia integrations"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "See All PRO Features"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "SAP Woo Suite Lite - Logs"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Date"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Action"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Status"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "Message"
+msgstr ""
+
+#: admin/class-settings-page.php
+msgid "No logs yet."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Unlock the Full Power of SAP Woo Suite"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "You're using the Lite version with stock and price sync. Upgrade to PRO for complete SAP Business One integration."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Get SAP Woo Suite PRO"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Full Product Sync"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Import products from SAP to WooCommerce with full attribute mapping, images, categories, and variations."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Stock & prices only"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Order Sync to SAP"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Automatically send WooCommerce orders to SAP Business One as Sales Orders with full line item details."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Not available"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Customer Sync"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Create and update Business Partners in SAP from WooCommerce customers with address synchronization."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Category Import"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Import SAP item groups as WooCommerce categories with hierarchy support."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Advanced Field Mapping"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Map any SAP field to WooCommerce product attributes, including UDFs and custom fields."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "REST API Endpoints"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Expose API endpoints for external integrations, webhooks, and automation workflows."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Multi-channel Support"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Connect TikTok Shop, Amazon, Miravia, and other marketplaces via SAP Woo Suite addons."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Auto-retry Failed Orders"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Intelligent retry system with exponential backoff for failed SAP orders."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Multiple Warehouses per Product"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Assign different warehouses to different products with warehouse-specific tariffs."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Global warehouse only"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Detailed Logging & Analytics"
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Comprehensive logs with filtering, export, and sync statistics dashboard."
+msgstr ""
+
+#: admin/class-pro-features.php
+msgid "Basic logs"
+msgstr ""
+
+#: includes/class-stock-sync.php
+msgid "No SAP connection configured"
+msgstr ""
+
+#: includes/class-stock-sync.php
+msgid "All fields are required."
+msgstr ""
+
+#: includes/class-stock-sync.php
+msgid "Permission denied."
+msgstr ""
+
+#: sap-woo-suite-lite.php
+msgid "SAP Woo Suite PRO is active. Lite version has been deactivated."
+msgstr ""
