@@ -16,33 +16,36 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Check if PRO version is active - if so, don't delete anything
-if (is_plugin_active('sap-woo-suite/sap-woo-suite.php')) {
+if ( ! function_exists( 'is_plugin_active' ) ) {
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+if ( is_plugin_active( 'sap-woo-suite/sap-woo-suite.php' ) ) {
     return;
 }
 
 // Only remove Lite-specific options (NOT shared options with PRO)
 // This preserves sapwc_connections, sapwc_selected_tariff, etc. for PRO upgrade
-$lite_only_options = [
+$sapwc_lite_only_options = [
     'sapwc_lite_installed',
     'sapwc_lite_version',
 ];
 
-foreach ($lite_only_options as $option) {
-    delete_option($option);
+foreach ($sapwc_lite_only_options as $sapwc_lite_opt) {
+    delete_option($sapwc_lite_opt);
 }
 
 // Remove logs table - use same table name as PRO for shared logs
 global $wpdb;
-$table = $wpdb->prefix . 'sapwc_logs';
 
 // Only delete if PRO is not installed (check by file existence)
-$pro_path = WP_PLUGIN_DIR . '/sap-woo-suite/sap-woo-suite.php';
-if (!file_exists($pro_path)) {
-    $wpdb->query("DROP TABLE IF EXISTS $table");
+$sapwc_lite_pro_path = WP_PLUGIN_DIR . '/sap-woo-suite/sap-woo-suite.php';
+if (!file_exists($sapwc_lite_pro_path)) {
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}sapwc_logs");
     
     // If PRO is not installed, also clean shared options
     // User can re-configure if they ever install Lite or PRO again
-    $shared_options = [
+    $sapwc_lite_shared_options = [
         'sapwc_connections',
         'sapwc_connection_index',
         'sapwc_selected_tariff',
@@ -53,8 +56,8 @@ if (!file_exists($pro_path)) {
         'sapwc_stock_last_sync',
     ];
     
-    foreach ($shared_options as $option) {
-        delete_option($option);
+    foreach ($sapwc_lite_shared_options as $sapwc_lite_opt) {
+        delete_option($sapwc_lite_opt);
     }
 }
 

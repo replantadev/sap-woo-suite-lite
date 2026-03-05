@@ -1,35 +1,36 @@
-=== SAP Woo Suite Lite - SAP Business One Integration for WooCommerce ===
+=== SAP Woo Suite Lite ===
 Contributors: replantadev
 Donate link: https://replanta.net/
 Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Connect WooCommerce with SAP Business One. Sync stock and prices automatically via Service Layer API. Products are matched by SKU (WooCommerce SKU = SAP ItemCode).
+Connect WooCommerce with SAP Business One. Stock and prices sync via Service Layer API -- set it once, it just works.
 
 == Description ==
 
-**SAP Woo Suite Lite** connects your WooCommerce store with SAP Business One, keeping your inventory stock and prices synchronized automatically.
+**SAP Woo Suite Lite** connects your WooCommerce store with SAP Business One, keeping your inventory stock and prices synchronized -- set it up once and forget about it.
 
 = Key Features =
 
-* **Stock Sync** - Automatically update WooCommerce product stock quantities from SAP B1
-* **Price Sync** - Keep product prices in sync with your SAP price lists
+* **Stock Sync** - WooCommerce stock quantities update from SAP Business One on your schedule
+* **Price Sync** - Product prices stay in sync with your SAP price lists -- always up to date
 * **Multiple Warehouses** - Aggregate stock from selected SAP warehouses
-* **Scheduled Sync** - Set up automatic hourly, twice daily, or daily synchronization
-* **Manual Sync** - One-click sync whenever you need it
-* **Activity Logs** - Track all sync operations with detailed logging
+* **Scheduled Sync** - Set your schedule (hourly, twice daily, or daily) and forget about it
+* **One-click Sync** - Need an immediate update? One click and it's done
+* **Activity Logs** - Track every sync operation with detailed logging
+* **SKU Readiness** - See how many products have SKUs ready for SAP matching
 
 = How It Works =
 
 1. Configure your SAP Business One Service Layer connection
 2. Select your price list and warehouses
-3. Enable automatic sync or sync manually
-4. Your WooCommerce products are updated with SAP stock and prices
+3. Enable sync -- that's it, you're done
+4. Your WooCommerce products update with SAP stock and prices on schedule
 
 = Requirements =
 
@@ -41,19 +42,19 @@ Connect WooCommerce with SAP Business One. Sync stock and prices automatically v
 
 = Upgrade to PRO =
 
-Need more features? **SAP Woo Suite PRO** includes:
+Want your entire business connected to SAP? **SAP Woo Suite PRO** handles everything:
 
 * Full product import from SAP (with attributes, images, variations)
-* Order sync to SAP (automatic Sales Order creation)
-* Customer sync (Business Partner creation)
+* Order sync to SAP (Sales Orders created instantly)
+* Customer sync (Business Partners created from WooCommerce customers)
 * Category import from SAP item groups
-* Advanced field mapping (including UDFs)
+* Field mapping (including UDFs)
 * REST API endpoints for integrations
 * Multi-channel support (TikTok Shop, Amazon, Miravia)
-* Auto-retry failed orders
+* Smart retry for failed orders (intelligent backoff)
 * Priority support
 
-[Learn more about SAP Woo Suite PRO](https://replanta.net/conector-sap-woocommerce/)
+[Get SAP Woo Suite PRO](https://replanta.net/conector-sap-woocommerce/)
 
 == Installation ==
 
@@ -63,7 +64,7 @@ Need more features? **SAP Woo Suite PRO** includes:
 4. Enter your Service Layer URL, username, password, and company database
 5. Test the connection
 6. Go to the **Sync Settings** tab to configure price list and warehouses
-7. Enable automatic sync or click "Sync Now" to sync manually
+7. Enable sync -- your store is now connected to SAP
 
 == Frequently Asked Questions ==
 
@@ -85,15 +86,26 @@ SSL verification is recommended for production environments but can be disabled 
 
 = How often does it sync? =
 
-You can choose hourly, twice daily, or daily automatic sync. Manual sync is always available.
+You can choose hourly, twice daily, or daily sync. Once configured, it runs in the background. One-click sync is always available if you need an immediate update. PRO offers intervals as fast as every 5 minutes.
 
 == Screenshots ==
 
-1. Connection settings - Configure your SAP Service Layer connection
-2. Sync settings - Select price list and warehouses
-3. PRO features - See what's available in the full version
+1. Dashboard - Visual overview of your sync status, product health and SKU readiness
+2. Connection settings - Configure your SAP Service Layer connection
+3. Sync settings - Select price list, warehouses, and schedule
+4. PRO features - See what's available with the full version
 
 == Changelog ==
+
+= 1.2.0 - 2026-03-05 =
+* New Dashboard with sync health, SKU readiness, and visual charts
+* Full i18n support -- English source strings with Spanish translation
+* Toned down marketing copy across all pages
+* Fixed lock icon display on PRO teaser KPI card
+* Lite-only log filtering (no more PRO log cross-contamination)
+* Log action renamed to stock_sync for clarity
+* Added SKU readiness metric to dashboard configuration table
+* Version bump to 1.2.0
 
 = 1.1.0 - 2026-03-05 =
 * New design system - modern, elegant admin UI with CSS custom properties

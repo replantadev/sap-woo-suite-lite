@@ -59,7 +59,7 @@ class SAPWC_Lite_Stock_Sync
             if ($is_ajax) {
                 return ['success' => false, 'message' => 'SAP connection not configured.'];
             }
-            SAPWC_Lite_Logger::log(0, 'sync', 'error', 'No SAP connection configured');
+            SAPWC_Lite_Logger::log(0, 'stock_sync', 'error', 'No SAP connection configured');
             return false;
         }
 
@@ -68,7 +68,7 @@ class SAPWC_Lite_Stock_Sync
 
         if (!$login['success']) {
             $msg = 'SAP login failed: ' . ($login['message'] ?? 'Unknown error');
-            SAPWC_Lite_Logger::log(0, 'sync', 'error', $msg);
+            SAPWC_Lite_Logger::log(0, 'stock_sync', 'error', $msg);
             if ($is_ajax) {
                 return ['success' => false, 'message' => $msg];
             }
@@ -83,7 +83,7 @@ class SAPWC_Lite_Stock_Sync
 
         if (empty($tariff) || empty($warehouses)) {
             $msg = 'Missing configuration: select a price list and at least one warehouse.';
-            SAPWC_Lite_Logger::log(0, 'sync', 'error', $msg);
+            SAPWC_Lite_Logger::log(0, 'stock_sync', 'error', $msg);
             if ($is_ajax) {
                 return ['success' => false, 'message' => $msg];
             }
@@ -99,7 +99,7 @@ class SAPWC_Lite_Stock_Sync
 
         if (!isset($response['value'])) {
             $msg = 'Failed to fetch items from SAP.';
-            SAPWC_Lite_Logger::log(0, 'sync', 'error', $msg);
+            SAPWC_Lite_Logger::log(0, 'stock_sync', 'error', $msg);
             if ($is_ajax) {
                 return ['success' => false, 'message' => $msg];
             }
@@ -181,15 +181,22 @@ class SAPWC_Lite_Stock_Sync
         update_option('sapwc_stock_last_sync', current_time('mysql'));
 
         $msg = "Sync completed: $updated products updated, $skipped skipped.";
-        SAPWC_Lite_Logger::log(0, 'sync', 'success', $msg);
+        SAPWC_Lite_Logger::log(0, 'stock_sync', 'success', $msg);
 
         if ($is_ajax) {
+            $pro_tips = array(
+                'Stock and prices in sync. Want orders to flow to SAP too? Try PRO.',
+                'Inventory up to date. Sync orders, customers and products with PRO.',
+                'Sync running smoothly. PRO adds order sync, customer sync and multi-channel.',
+                'Products updated. With PRO, new products are also imported from SAP.',
+            );
             return [
                 'success'   => true,
                 'message'   => $msg,
                 'updated'   => $updated,
                 'skipped'   => $skipped,
-                'last_sync' => get_option('sapwc_stock_last_sync')
+                'last_sync' => get_option('sapwc_stock_last_sync'),
+                'pro_tip'   => $pro_tips[ array_rand( $pro_tips ) ],
             ];
         }
 
@@ -227,11 +234,11 @@ class SAPWC_Lite_Stock_Sync
             wp_send_json_error(['message' => 'Permission denied.']);
         }
 
-        $url  = sanitize_text_field($_POST['url'] ?? '');
-        $user = sanitize_text_field($_POST['user'] ?? '');
-        $pass = $_POST['pass'] ?? '';
-        $db   = sanitize_text_field($_POST['db'] ?? '');
-        $ssl  = ($_POST['ssl'] ?? '0') === '1';
+        $url  = sanitize_text_field( wp_unslash( $_POST['url'] ?? '' ) );
+        $user = sanitize_text_field( wp_unslash( $_POST['user'] ?? '' ) );
+        $pass = wp_unslash( $_POST['pass'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- password cannot be sanitized
+        $db   = sanitize_text_field( wp_unslash( $_POST['db'] ?? '' ) );
+        $ssl  = sanitize_text_field( wp_unslash( $_POST['ssl'] ?? '0' ) ) === '1';
 
         if (empty($url) || empty($user) || empty($pass) || empty($db)) {
             wp_send_json_error(['message' => 'All fields are required.']);

@@ -29,25 +29,8 @@ class SAPWC_Lite_Settings_Page {
      * Add admin menu
      */
     public function add_menu() {
-        // SVG icon for sync (dashicons-update)
-        $icon_svg = 'data:image/svg+xml;base64,' . base64_encode(
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black">
-                <path d="M10.2 3.28c3.53 0 6.43 2.61 6.92 6h2.08l-3.5 4-3.5-4h2.32c-.45-1.97-2.21-3.45-4.32-3.45-1.45 0-2.73.71-3.54 1.78L4.95 5.66C6.23 4.2 8.11 3.28 10.2 3.28zm-4.4 11.17c.45 1.97 2.21 3.45 4.32 3.45 1.45 0 2.73-.71 3.54-1.78l1.71 1.95c-1.28 1.46-3.15 2.38-5.25 2.38-3.53 0-6.43-2.61-6.92-6H1.12l3.5-4 3.5 4H5.8z"/>
-            </svg>'
-        );
-
-        add_menu_page(
-            __( 'SAP Woo Suite Lite', 'sap-woo-suite-lite' ),
-            __( 'SAP Woo Lite', 'sap-woo-suite-lite' ),
-            'manage_woocommerce',
-            'sapwc-lite-settings',
-            array( $this, 'render_page' ),
-            $icon_svg,
-            56
-        );
-
         add_submenu_page(
-            'sapwc-lite-settings',
+            'sapwc-lite',
             __( 'Settings', 'sap-woo-suite-lite' ),
             __( 'Settings', 'sap-woo-suite-lite' ),
             'manage_woocommerce',
@@ -56,7 +39,7 @@ class SAPWC_Lite_Settings_Page {
         );
 
         add_submenu_page(
-            'sapwc-lite-settings',
+            'sapwc-lite',
             __( 'Logs', 'sap-woo-suite-lite' ),
             __( 'Logs', 'sap-woo-suite-lite' ),
             'manage_woocommerce',
@@ -69,6 +52,7 @@ class SAPWC_Lite_Settings_Page {
      * Handle form submissions manually to use PRO-compatible option format
      */
     public function handle_save() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- early bail-out before nonce check
         if ( ! isset( $_POST['sapwc_lite_save'] ) || ! current_user_can( 'manage_woocommerce' ) ) {
             return;
         }
@@ -82,11 +66,11 @@ class SAPWC_Lite_Settings_Page {
         if ( 'connection' === $tab ) {
             // Save connection in PRO-compatible format (array).
             $connection = array(
-                'url'  => isset( $_POST['sap_url'] ) ? esc_url_raw( rtrim( wp_unslash( $_POST['sap_url'] ), '/' ) ) : '',
+                'url'  => isset( $_POST['sap_url'] ) ? esc_url_raw( rtrim( sanitize_text_field( wp_unslash( $_POST['sap_url'] ) ), '/' ) ) : '',
                 'user' => isset( $_POST['sap_user'] ) ? sanitize_text_field( wp_unslash( $_POST['sap_user'] ) ) : '',
                 'pass' => isset( $_POST['sap_pass'] ) ? wp_unslash( $_POST['sap_pass'] ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                 'db'   => isset( $_POST['sap_db'] ) ? sanitize_text_field( wp_unslash( $_POST['sap_db'] ) ) : '',
-                'ssl'  => isset( $_POST['sap_ssl'] ) && '1' === $_POST['sap_ssl'],
+                'ssl'  => isset( $_POST['sap_ssl'] ) && '1' === sanitize_text_field( wp_unslash( $_POST['sap_ssl'] ) ),
             );
 
             // Store as array with index 0 (PRO supports multiple connections).
@@ -159,6 +143,24 @@ class SAPWC_Lite_Settings_Page {
             true
         );
 
+        // Chart.js + dashboard.js only on dashboard page
+        if ( 'toplevel_page_sapwc-lite' === $hook ) {
+            wp_enqueue_script(
+                'chartjs',
+                SAPWC_LITE_URL . 'admin/js/chart.min.js',
+                array(),
+                '4.4.7',
+                true
+            );
+            wp_enqueue_script(
+                'sapwc-lite-dashboard',
+                SAPWC_LITE_URL . 'admin/js/dashboard.js',
+                array( 'chartjs' ),
+                SAPWC_LITE_VERSION,
+                true
+            );
+        }
+
         wp_localize_script(
             'sapwc-lite-admin',
             'sapwcLite',
@@ -173,6 +175,7 @@ class SAPWC_Lite_Settings_Page {
                     'syncing'           => __( 'Syncing...', 'sap-woo-suite-lite' ),
                     'products_updated'  => __( 'products updated', 'sap-woo-suite-lite' ),
                     'sync_failed'       => __( 'Sync failed', 'sap-woo-suite-lite' ),
+                    'go_pro'            => __( 'Upgrade to PRO', 'sap-woo-suite-lite' ),
                 ),
             )
         );
@@ -182,6 +185,7 @@ class SAPWC_Lite_Settings_Page {
      * Render main settings page
      */
     public function render_page() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only tab navigation
         $tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'connection';
 
         // Show any saved settings messages.
@@ -195,8 +199,8 @@ class SAPWC_Lite_Settings_Page {
 
             <div class="sapwc-lite-pro-banner">
                 <div class="sapwc-lite-pro-content">
-                    <strong><?php esc_html_e( 'Unlock Full Power with PRO', 'sap-woo-suite-lite' ); ?></strong>
-                    <p><?php esc_html_e( 'Sync products, orders, customers, field mapping, REST API, and more.', 'sap-woo-suite-lite' ); ?></p>
+                    <strong><?php esc_html_e( 'Sync your entire business with PRO', 'sap-woo-suite-lite' ); ?></strong>
+                    <p><?php esc_html_e( 'Orders, products, customers and multi-channel -- all connected to SAP.', 'sap-woo-suite-lite' ); ?></p>
                 </div>
                 <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" class="button button-primary">
                     <?php esc_html_e( 'Upgrade to PRO', 'sap-woo-suite-lite' ); ?>
@@ -351,8 +355,8 @@ class SAPWC_Lite_Settings_Page {
 
         <div class="sapwc-info-box">
             <p style="margin:0;">
-                <strong><?php esc_html_e( 'How it works:', 'sap-woo-suite-lite' ); ?></strong>
-                <?php esc_html_e( 'Products are matched by SKU. The WooCommerce product SKU must match the SAP ItemCode exactly.', 'sap-woo-suite-lite' ); ?>
+                <strong><?php esc_html_e( 'How sync works:', 'sap-woo-suite-lite' ); ?></strong>
+                <?php esc_html_e( 'Products are matched by SKU (WooCommerce SKU = SAP ItemCode). Once configured, stock and prices sync on your chosen schedule -- set it and forget it.', 'sap-woo-suite-lite' ); ?>
             </p>
         </div>
 
@@ -407,14 +411,36 @@ class SAPWC_Lite_Settings_Page {
                             <input type="checkbox" name="sync_stock" value="1"
                                    <?php checked( $sync_stock, '1' ); ?>>
                             <strong><?php esc_html_e( 'Sync Stock', 'sap-woo-suite-lite' ); ?></strong>
-                            - <?php esc_html_e( 'Update WooCommerce stock quantities from SAP', 'sap-woo-suite-lite' ); ?>
+                            - <?php esc_html_e( 'Keep WooCommerce stock in sync with SAP', 'sap-woo-suite-lite' ); ?>
                         </label>
-                        <label style="display:block;">
+                        <label style="display:block;margin-bottom:8px;">
                             <input type="checkbox" name="sync_prices" value="1"
                                    <?php checked( $sync_prices, '1' ); ?>>
                             <strong><?php esc_html_e( 'Sync Prices', 'sap-woo-suite-lite' ); ?></strong>
-                            - <?php esc_html_e( 'Update WooCommerce prices from SAP price list', 'sap-woo-suite-lite' ); ?>
+                            - <?php esc_html_e( 'Keep prices updated from your SAP price list', 'sap-woo-suite-lite' ); ?>
                         </label>
+
+                        <!-- Locked PRO sync options -->
+                        <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--sapwc-gray-200, #e2e8f0);">
+                            <label style="display:block;margin-bottom:8px; opacity:0.5; cursor:not-allowed;">
+                                <input type="checkbox" disabled>
+                                <strong><?php esc_html_e( 'Sync Orders', 'sap-woo-suite-lite' ); ?></strong>
+                                - <?php esc_html_e( 'Send orders to SAP as Sales Orders', 'sap-woo-suite-lite' ); ?>
+                                <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
+                            </label>
+                            <label style="display:block;margin-bottom:8px; opacity:0.5; cursor:not-allowed;">
+                                <input type="checkbox" disabled>
+                                <strong><?php esc_html_e( 'Sync Customers', 'sap-woo-suite-lite' ); ?></strong>
+                                - <?php esc_html_e( 'Create Business Partners in SAP from customers', 'sap-woo-suite-lite' ); ?>
+                                <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
+                            </label>
+                            <label style="display:block; opacity:0.5; cursor:not-allowed;">
+                                <input type="checkbox" disabled>
+                                <strong><?php esc_html_e( 'Import Products', 'sap-woo-suite-lite' ); ?></strong>
+                                - <?php esc_html_e( 'Import products from SAP with images and attributes', 'sap-woo-suite-lite' ); ?>
+                                <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
+                            </label>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -435,9 +461,18 @@ class SAPWC_Lite_Settings_Page {
                             <option value="daily" <?php selected( $interval, 'daily' ); ?>>
                                 <?php esc_html_e( 'Daily', 'sap-woo-suite-lite' ); ?>
                             </option>
+                            <option disabled style="color:#41999f;">
+                                <?php esc_html_e( 'Every 15 minutes -- PRO', 'sap-woo-suite-lite' ); ?>
+                            </option>
+                            <option disabled style="color:#41999f;">
+                                <?php esc_html_e( 'Every 5 minutes -- PRO', 'sap-woo-suite-lite' ); ?>
+                            </option>
+                            <option disabled style="color:#41999f;">
+                                <?php esc_html_e( 'Real-time (webhook) -- PRO', 'sap-woo-suite-lite' ); ?>
+                            </option>
                         </select>
                         <p class="description">
-                            <?php esc_html_e( 'Automatic sync runs via WP-Cron when stock sync is enabled.', 'sap-woo-suite-lite' ); ?>
+                            <?php esc_html_e( 'Syncs run on this schedule. Set it and forget it.', 'sap-woo-suite-lite' ); ?>
                         </p>
                     </td>
                 </tr>
@@ -461,14 +496,17 @@ class SAPWC_Lite_Settings_Page {
         </form>
 
         <div class="sapwc-lite-pro-features-preview">
-            <h3><?php esc_html_e( 'PRO Features Available', 'sap-woo-suite-lite' ); ?></h3>
+            <h3><?php esc_html_e( 'Want to sync more than stock and prices?', 'sap-woo-suite-lite' ); ?></h3>
+            <p style="margin-bottom:12px; color: var(--sapwc-gray-600, #475569);">
+                <?php esc_html_e( 'With PRO, orders, products, customers and more also sync with SAP. Set it up once, it just works.', 'sap-woo-suite-lite' ); ?>
+            </p>
             <ul>
-                <li><strong><?php esc_html_e( 'Full Product Import', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Import products from SAP with images, attributes, variations', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Order Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Automatically send orders to SAP as Sales Orders', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Customer Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Create Business Partners from WooCommerce customers', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Full Product Import', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Products created and updated from SAP', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Order Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Every order flows to SAP as a Sales Order', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Customer Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Business Partners created from WooCommerce customers', 'sap-woo-suite-lite' ); ?></li>
                 <li><strong><?php esc_html_e( 'Field Mapping', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Map any SAP field to WooCommerce attributes', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'REST API', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'External integrations and webhooks', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Multi-channel', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'TikTok Shop, Amazon, Miravia integrations', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Smart Retry', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Failed syncs retry with intelligent backoff', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Multi-channel', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'TikTok Shop, Amazon, Miravia included', 'sap-woo-suite-lite' ); ?></li>
             </ul>
             <a href="?page=sapwc-lite-pro" class="button"><?php esc_html_e( 'See All PRO Features', 'sap-woo-suite-lite' ); ?></a>
         </div>
@@ -514,6 +552,16 @@ class SAPWC_Lite_Settings_Page {
                     <?php endif; ?>
                 </tbody>
             </table>
+
+            <div class="sapwc-lite-pro-features-preview" style="margin-top:20px;">
+                <h3><?php esc_html_e( 'Need advanced log management?', 'sap-woo-suite-lite' ); ?></h3>
+                <p style="margin-bottom:8px; color: var(--sapwc-gray-600, #475569);">
+                    <?php esc_html_e( 'SAP Woo Suite PRO includes filtering by date and action, CSV export, log cleanup, and a visual analytics dashboard.', 'sap-woo-suite-lite' ); ?>
+                </p>
+                <a href="<?php echo esc_url( admin_url( 'admin.php?page=sapwc-lite-pro' ) ); ?>" class="button">
+                    <?php esc_html_e( 'See PRO Features', 'sap-woo-suite-lite' ); ?>
+                </a>
+            </div>
         </div>
         <?php
     }

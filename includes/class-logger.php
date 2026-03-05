@@ -28,7 +28,7 @@ class SAPWC_Lite_Logger
         $charset = $wpdb->get_charset_collate();
 
         // Same table structure as PRO version
-        $sql = "CREATE TABLE IF NOT EXISTS $table (
+        $sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}sapwc_logs (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             order_id BIGINT UNSIGNED DEFAULT 0,
             action VARCHAR(50) NOT NULL,
@@ -61,10 +61,12 @@ class SAPWC_Lite_Logger
         $table = $wpdb->prefix . self::TABLE_NAME;
 
         // Ensure table exists
-        if ($wpdb->get_var("SHOW TABLES LIKE '$table'") !== $table) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange
+        if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) !== $table ) {
             self::create_table();
         }
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
         $wpdb->insert($table, [
             'order_id'   => is_numeric($order_id) ? (int) $order_id : 0,
             'action'     => sanitize_text_field($action),
@@ -76,6 +78,7 @@ class SAPWC_Lite_Logger
 
         // Also log to error_log in debug mode
         if (defined('WP_DEBUG') && WP_DEBUG) {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
             error_log("[SAPWC Lite] [$action] [$status] $message");
         }
     }
@@ -89,35 +92,62 @@ class SAPWC_Lite_Logger
         $table = $wpdb->prefix . self::TABLE_NAME;
 
         // Check if table exists
-        if ($wpdb->get_var("SHOW TABLES LIKE '$table'") !== $table) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) !== $table ) {
             return [];
         }
 
-        $where = ['1=1'];
-        $values = [];
+        $base = "SELECT * FROM {$wpdb->prefix}sapwc_logs";
 
-        if ($action) {
-            $where[] = 'action = %s';
-            $values[] = $action;
+        if ( $action && $status ) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            return $wpdb->get_results(
+                $wpdb->prepare(
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table from $wpdb->prefix
+                    "{$base} WHERE action = %s AND status = %s ORDER BY created_at DESC LIMIT %d",
+                    sanitize_text_field( $action ),
+                    sanitize_text_field( $status ),
+                    (int) $limit
+                ),
+                ARRAY_A
+            );
         }
 
-        if ($status) {
-            $where[] = 'status = %s';
-            $values[] = $status;
+        if ( $action ) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            return $wpdb->get_results(
+                $wpdb->prepare(
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                    "{$base} WHERE action = %s ORDER BY created_at DESC LIMIT %d",
+                    sanitize_text_field( $action ),
+                    (int) $limit
+                ),
+                ARRAY_A
+            );
         }
 
-        $where_sql = implode(' AND ', $where);
-        $values[] = (int) $limit;
-
-        $sql = "SELECT * FROM $table WHERE $where_sql ORDER BY created_at DESC LIMIT %d";
-
-        if (count($values) > 1) {
-            $sql = $wpdb->prepare($sql, $values);
-        } else {
-            $sql = $wpdb->prepare($sql, $limit);
+        if ( $status ) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            return $wpdb->get_results(
+                $wpdb->prepare(
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                    "{$base} WHERE status = %s ORDER BY created_at DESC LIMIT %d",
+                    sanitize_text_field( $status ),
+                    (int) $limit
+                ),
+                ARRAY_A
+            );
         }
 
-        return $wpdb->get_results($sql, ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        return $wpdb->get_results(
+            $wpdb->prepare(
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                "{$base} ORDER BY created_at DESC LIMIT %d",
+                (int) $limit
+            ),
+            ARRAY_A
+        );
     }
 
     /**
@@ -126,10 +156,11 @@ class SAPWC_Lite_Logger
     public static function cleanup($days = 7)
     {
         global $wpdb;
-        $table = $wpdb->prefix . self::TABLE_NAME;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $wpdb->query($wpdb->prepare(
-            "DELETE FROM $table WHERE created_at < DATE_SUB(NOW(), INTERVAL %d DAY)",
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name from $wpdb->prefix is safe
+            "DELETE FROM {$wpdb->prefix}sapwc_logs WHERE created_at < DATE_SUB(NOW(), INTERVAL %d DAY)",
             $days
         ));
     }
@@ -141,8 +172,8 @@ class SAPWC_Lite_Logger
     public static function drop_table()
     {
         global $wpdb;
-        $table = $wpdb->prefix . self::TABLE_NAME;
-        $wpdb->query("DROP TABLE IF EXISTS $table");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}sapwc_logs" );
     }
 }
 

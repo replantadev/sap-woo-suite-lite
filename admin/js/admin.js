@@ -67,11 +67,21 @@
                         $result.addClass('success').text(
                             response.data.updated + ' ' + sapwcLite.i18n.products_updated
                         );
+
+                        // Show PRO tip after successful sync
+                        if (response.data.pro_tip) {
+                            var $tip = $('<div class="sapwc-lite-pro-tip" style="margin-top:12px;padding:10px 14px;background:linear-gradient(135deg,#f0fdfa,#e0f7fa);border-left:3px solid #41999f;border-radius:4px;font-size:13px;color:#1e293b;">' +
+                                '<strong style="color:#41999f;">PRO Tip:</strong> ' +
+                                $('<span>').text(response.data.pro_tip).html() +
+                                ' <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" style="color:#41999f;font-weight:600;text-decoration:none;">' + sapwcLite.i18n.go_pro + ' &rarr;</a>' +
+                                '</div>');
+                            $result.after($tip);
+                        }
                         
-                        // Reload page after 2 seconds to show updated last_sync
+                        // Reload page after 4 seconds to show updated last_sync
                         setTimeout(function() {
                             location.reload();
-                        }, 2000);
+                        }, 4000);
                     } else {
                         $result.addClass('error').text(response.data.message || sapwcLite.i18n.sync_failed);
                     }

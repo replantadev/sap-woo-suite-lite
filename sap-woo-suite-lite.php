@@ -12,9 +12,10 @@
  * @wordpress-plugin
  * Plugin Name:       SAP Woo Suite Lite
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
- * Description:       Connect your WooCommerce store with SAP Business One. Sync stock and prices automatically. Upgrade to PRO for full product sync, orders, field mapping, and more.
- * Version: 1.1.1
+ * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
+ * Version: 1.2.1
  * Requires at least: 5.8
+ * Tested up to:      6.9
  * Requires PHP:      7.4
  * Author:            Replanta Dev
  * Author URI:        https://replanta.net
@@ -34,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ──────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────
-define( 'SAPWC_LITE_VERSION', '1.1.0' );
+define( 'SAPWC_LITE_VERSION', '1.2.0' );
 define( 'SAPWC_LITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SAPWC_LITE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SAPWC_LITE_FILE', __FILE__ );
@@ -52,19 +53,8 @@ function sapwc_lite_declare_hpos_compatibility() {
 }
 add_action( 'before_woocommerce_init', 'sapwc_lite_declare_hpos_compatibility' );
 
-/**
- * Load plugin text domain for translations.
- *
- * @since 1.0.0
- */
-function sapwc_lite_load_textdomain() {
-    load_plugin_textdomain(
-        'sap-woo-suite-lite',
-        false,
-        dirname( SAPWC_LITE_BASENAME ) . '/languages'
-    );
-}
-add_action( 'init', 'sapwc_lite_load_textdomain' );
+// WordPress 4.6+ automatically loads translations for plugins hosted on wp.org.
+// Bundled .l10n.php files are also picked up without load_plugin_textdomain().
 
 /**
  * Check if PRO version is active and deactivate Lite.
@@ -152,6 +142,7 @@ function sapwc_lite_load_dependencies() {
 
     // Load admin UI.
     if ( is_admin() ) {
+        require_once SAPWC_LITE_PATH . 'admin/class-dashboard-page.php';
         require_once SAPWC_LITE_PATH . 'admin/class-settings-page.php';
         require_once SAPWC_LITE_PATH . 'admin/class-pro-features.php';
     }
@@ -179,8 +170,11 @@ function sapwc_lite_hide_other_notices() {
 
     // Our admin page IDs.
     $our_pages = array(
-        'toplevel_page_sapwc-lite-settings',
-        'sap-woo-suite-lite_page_sapwc-lite-pro-features',
+        'toplevel_page_sapwc-lite',
+        'sap-woo-lite_page_sapwc-lite',
+        'sap-woo-lite_page_sapwc-lite-settings',
+        'sap-woo-lite_page_sapwc-lite-logs',
+        'sap-woo-lite_page_sapwc-lite-pro',
     );
 
     if ( $screen && in_array( $screen->id, $our_pages, true ) ) {
@@ -224,8 +218,8 @@ function sapwc_lite_woocommerce_missing_notice() {
 function sapwc_lite_plugin_action_links( $links ) {
     $settings_link = sprintf(
         '<a href="%s">%s</a>',
-        esc_url( admin_url( 'admin.php?page=sapwc-lite-settings' ) ),
-        esc_html__( 'Settings', 'sap-woo-suite-lite' )
+        esc_url( admin_url( 'admin.php?page=sapwc-lite' ) ),
+        esc_html__( 'Dashboard', 'sap-woo-suite-lite' )
     );
 
     $pro_link = sprintf(
@@ -292,8 +286,22 @@ function sapwc_lite_admin_bar_status( $wp_admin_bar ) {
         array(
             'id'    => 'sapwc-lite-status',
             'title' => '<span style="color:' . esc_attr( $color ) . ';">&#9679;</span> ' . esc_html__( 'SAP Lite', 'sap-woo-suite-lite' ),
-            'href'  => esc_url( admin_url( 'admin.php?page=sapwc-lite-settings' ) ),
+            'href'  => esc_url( admin_url( 'admin.php?page=sapwc-lite' ) ),
             'meta'  => array( 'title' => $title ),
+        )
+    );
+
+    // PRO upgrade sub-node.
+    $wp_admin_bar->add_node(
+        array(
+            'parent' => 'sapwc-lite-status',
+            'id'     => 'sapwc-lite-upgrade',
+            'title'  => '<span style="color:#41999f;">&#9733;</span> ' . esc_html__( 'Upgrade to PRO', 'sap-woo-suite-lite' ),
+            'href'   => esc_url( 'https://replanta.net/conector-sap-woocommerce/' ),
+            'meta'   => array(
+                'target' => '_blank',
+                'title'  => __( 'Sync orders, products, customers and more with SAP', 'sap-woo-suite-lite' ),
+            ),
         )
     );
 }
