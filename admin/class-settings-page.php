@@ -209,11 +209,11 @@ class SAPWC_Lite_Settings_Page {
 
             <nav class="nav-tab-wrapper">
                 <a href="?page=sapwc-lite-settings&tab=connection"
-                   class="nav-tab <?php echo 'connection' === $tab ? 'nav-tab-active' : ''; ?>">
+                   class="nav-tab <?php echo esc_attr( 'connection' === $tab ? 'nav-tab-active' : '' ); ?>">
                     <?php esc_html_e( 'Connection', 'sap-woo-suite-lite' ); ?>
                 </a>
                 <a href="?page=sapwc-lite-settings&tab=sync"
-                   class="nav-tab <?php echo 'sync' === $tab ? 'nav-tab-active' : ''; ?>">
+                   class="nav-tab <?php echo esc_attr( 'sync' === $tab ? 'nav-tab-active' : '' ); ?>">
                     <?php esc_html_e( 'Sync Settings', 'sap-woo-suite-lite' ); ?>
                 </a>
             </nav>
@@ -371,7 +371,7 @@ class SAPWC_Lite_Settings_Page {
                 <tr>
                     <th><label for="price_list"><?php esc_html_e( 'Price List', 'sap-woo-suite-lite' ); ?></label></th>
                     <td>
-                        <select id="price_list" name="price_list" <?php echo empty( $price_lists ) ? 'disabled' : ''; ?>>
+                        <select id="price_list" name="price_list" <?php echo esc_attr( empty( $price_lists ) ? 'disabled' : '' ); ?>>
                             <option value=""><?php esc_html_e( '-- Select Price List --', 'sap-woo-suite-lite' ); ?></option>
                             <?php foreach ( $price_lists as $pl ) : ?>
                                 <option value="<?php echo esc_attr( $pl['id'] ); ?>"
@@ -488,7 +488,7 @@ class SAPWC_Lite_Settings_Page {
                 <button type="submit" class="button button-primary">
                     <?php esc_html_e( 'Save Sync Settings', 'sap-woo-suite-lite' ); ?>
                 </button>
-                <button type="button" id="sapwc-lite-sync-now" class="button" <?php echo ! $conn ? 'disabled' : ''; ?>>
+                <button type="button" id="sapwc-lite-sync-now" class="button" <?php echo esc_attr( ! $conn ? 'disabled' : '' ); ?>>
                     <?php esc_html_e( 'Sync Now', 'sap-woo-suite-lite' ); ?>
                 </button>
                 <span id="sapwc-lite-sync-result"></span>

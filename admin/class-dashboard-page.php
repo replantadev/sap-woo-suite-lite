@@ -300,7 +300,7 @@ class SAPWC_Lite_Dashboard_Page {
                         <div class="sapwc-kpi__icon">
                             <span class="dashicons dashicons-products"></span>
                         </div>
-                        <div class="sapwc-kpi__value"><?php echo number_format( $products['managed'], 0, ',', '.' ); ?></div>
+                        <div class="sapwc-kpi__value"><?php echo esc_html( number_format( $products['managed'], 0, ',', '.' ) ); ?></div>
                         <div class="sapwc-kpi__label"><?php esc_html_e( 'Products Managed', 'sap-woo-suite-lite' ); ?></div>
                         <div class="sapwc-kpi__detail">
                             <?php
@@ -340,7 +340,7 @@ class SAPWC_Lite_Dashboard_Page {
                     </div>
 
                     <!-- Log health -->
-                    <div class="sapwc-kpi <?php echo $logs['error'] > 0 ? 'sapwc-kpi--danger' : ( $logs['total'] > 0 ? 'sapwc-kpi--success' : '' ); ?>">
+                    <div class="sapwc-kpi <?php echo esc_attr( $logs['error'] > 0 ? 'sapwc-kpi--danger' : ( $logs['total'] > 0 ? 'sapwc-kpi--success' : '' ) ); ?>">
                         <div class="sapwc-kpi__icon">
                             <span class="dashicons dashicons-list-view"></span>
                         </div>
@@ -433,7 +433,9 @@ class SAPWC_Lite_Dashboard_Page {
                                 <tr>
                                     <td style="font-weight:500;"><?php esc_html_e( 'Stock sync', 'sap-woo-suite-lite' ); ?></td>
                                     <td style="text-align:right;">
-                                        <?php echo $auto_stock
+                                        <?php
+                                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- output is hardcoded HTML with esc_html__() values
+                                        echo $auto_stock
                                             ? '<span class="sapwc-badge sapwc-badge--success">' . esc_html__( 'Active', 'sap-woo-suite-lite' ) . '</span>'
                                             : '<span class="sapwc-badge sapwc-badge--neutral">' . esc_html__( 'Disabled', 'sap-woo-suite-lite' ) . '</span>'; ?>
                                     </td>
@@ -441,7 +443,10 @@ class SAPWC_Lite_Dashboard_Page {
                                 <tr>
                                     <td style="font-weight:500;"><?php esc_html_e( 'Price sync', 'sap-woo-suite-lite' ); ?></td>
                                     <td style="text-align:right;">
-                                        <?php echo $auto_price
+                                        <?php
+                                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- output is hardcoded HTML with esc_html__() values
+                                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- output is hardcoded HTML with esc_html__() values
+                                        echo $auto_price
                                             ? '<span class="sapwc-badge sapwc-badge--success">' . esc_html__( 'Active', 'sap-woo-suite-lite' ) . '</span>'
                                             : '<span class="sapwc-badge sapwc-badge--neutral">' . esc_html__( 'Disabled', 'sap-woo-suite-lite' ) . '</span>'; ?>
                                     </td>
@@ -449,7 +454,14 @@ class SAPWC_Lite_Dashboard_Page {
                                 <tr>
                                     <td style="font-weight:500;"><?php esc_html_e( 'SAP Price List', 'sap-woo-suite-lite' ); ?></td>
                                     <td style="text-align:right; font-weight:700;">
-                                        <?php echo $tariff ? esc_html( $tariff ) : '<span style="color:var(--sapwc-danger);">' . esc_html__( 'Not selected', 'sap-woo-suite-lite' ) . '</span>'; ?>
+                                        <?php
+                                        if ( $tariff ) {
+                                            echo esc_html( $tariff );
+                                        } else {
+                                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded HTML with esc_html__() value
+                                            echo '<span style="color:var(--sapwc-danger);">' . esc_html__( 'Not selected', 'sap-woo-suite-lite' ) . '</span>';
+                                        }
+                                        ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -459,6 +471,7 @@ class SAPWC_Lite_Dashboard_Page {
                                         if ( ! empty( $warehouses ) ) {
                                             echo esc_html( implode( ', ', (array) $warehouses ) );
                                         } else {
+                                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded HTML with esc_html__() value
                                             echo '<span style="color:var(--sapwc-danger);">' . esc_html__( 'Not selected', 'sap-woo-suite-lite' ) . '</span>';
                                         }
                                         ?>
@@ -469,12 +482,14 @@ class SAPWC_Lite_Dashboard_Page {
                                     <td style="text-align:right;">
                                         <?php
                                         if ( $products['with_sku'] > 0 ) {
+                                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded HTML wrapper with escaped sprintf
                                             printf(
                                                 '<span class="sapwc-badge sapwc-badge--success">%s</span>',
                                                 /* translators: %1$d: number of products with SKU, %2$d: total products */
-                                sprintf( esc_html__( '%1$d of %2$d products', 'sap-woo-suite-lite' ), (int) $products['with_sku'], (int) $products['total'] )
+                                                sprintf( esc_html__( '%1$d of %2$d products', 'sap-woo-suite-lite' ), (int) $products['with_sku'], (int) $products['total'] )
                                             );
                                         } else {
+                                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded HTML with esc_html__() value
                                             echo '<span class="sapwc-badge sapwc-badge--danger">' . esc_html__( 'No products with SKU', 'sap-woo-suite-lite' ) . '</span>';
                                         }
                                         ?>

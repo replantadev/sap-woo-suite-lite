@@ -83,7 +83,7 @@ class SAPWC_Lite_API_Client
         $this->conn['ssl'] = $ssl;
         $endpoint = $this->base_url . '/Login';
 
-        $body = json_encode([
+        $body = wp_json_encode([
             'UserName'  => $user,
             'Password'  => $pass,
             'CompanyDB' => $db
@@ -150,7 +150,7 @@ class SAPWC_Lite_API_Client
         ], $extra_args);
 
         if ($body !== null) {
-            $args['body'] = is_string($body) ? $body : json_encode($body);
+            $args['body'] = is_string($body) ? $body : wp_json_encode($body);
         }
 
         $response = wp_remote_request($url, $args);

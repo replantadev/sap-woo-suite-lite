@@ -11,7 +11,7 @@
  */
 
 // Exit if not called by WordPress uninstaller
-if (!defined('WP_UNINSTALL_PLUGIN')) {
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
     exit;
 }
 

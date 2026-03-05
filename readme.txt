@@ -5,7 +5,7 @@ Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,12 @@ You can choose hourly, twice daily, or daily sync. Once configured, it runs in t
 
 == Changelog ==
 
+= 1.2.3 - 2026-03-05 =
+* Fixed license file to match GPL-2.0-or-later declaration
+* Improved output escaping across dashboard and settings pages
+* Replaced json_encode with wp_json_encode for WP coding standards
+* Version consistency fix across all plugin files
+
 = 1.2.0 - 2026-03-05 =
 * New Dashboard with sync health, SKU readiness, and visual charts
 * Full i18n support -- English source strings with Spanish translation
@@ -128,6 +134,9 @@ You can choose hourly, twice daily, or daily sync. Once configured, it runs in t
 * PRO features preview page
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+Coding standards and license compliance improvements for WP.org submission.
 
 = 1.1.0 =
 New design system with modern, elegant admin UI.

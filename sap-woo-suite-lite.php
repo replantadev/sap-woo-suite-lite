@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ──────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────
-define( 'SAPWC_LITE_VERSION', '1.2.0' );
+define( 'SAPWC_LITE_VERSION', '1.2.3' );
 define( 'SAPWC_LITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SAPWC_LITE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SAPWC_LITE_FILE', __FILE__ );
