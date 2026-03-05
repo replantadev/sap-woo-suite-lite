@@ -5,7 +5,7 @@ Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,13 @@ You can choose hourly, twice daily, or daily automatic sync. Manual sync is alwa
 
 == Changelog ==
 
+= 1.1.0 - 2026-03-05 =
+* New design system - modern, elegant admin UI with CSS custom properties
+* Unified visual language with SAP Woo Suite PRO
+* Redesigned tabs, form inputs, buttons, and log badges
+* PRO Features page styles moved from inline to external CSS
+* Responsive improvements for mobile admin
+
 = 1.0.1 - 2026-03-04 =
 * Added SKU matching info in sync settings UI
 * Hide other plugin notices on our admin pages
@@ -109,6 +116,9 @@ You can choose hourly, twice daily, or daily automatic sync. Manual sync is alwa
 * PRO features preview page
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+New design system with modern, elegant admin UI.
 
 = 1.0.1 =
 Added SKU matching info and UI improvements.

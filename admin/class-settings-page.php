@@ -187,7 +187,7 @@ class SAPWC_Lite_Settings_Page {
         // Show any saved settings messages.
         settings_errors( 'sapwc_lite' );
         ?>
-        <div class="wrap sapwc-lite-wrap">
+        <div class="wrap sapwc-wrap">
             <h1>
                 <span class="sapwc-lite-logo">SAP Woo Suite Lite</span>
                 <span class="sapwc-lite-version">v<?php echo esc_html( SAPWC_LITE_VERSION ); ?></span>
@@ -349,7 +349,7 @@ class SAPWC_Lite_Settings_Page {
         endif;
         ?>
 
-        <div class="notice notice-info" style="margin:15px 0;padding:12px 15px;">
+        <div class="sapwc-info-box">
             <p style="margin:0;">
                 <strong><?php esc_html_e( 'How it works:', 'sap-woo-suite-lite' ); ?></strong>
                 <?php esc_html_e( 'Products are matched by SKU. The WooCommerce product SKU must match the SAP ItemCode exactly.', 'sap-woo-suite-lite' ); ?>
@@ -460,9 +460,9 @@ class SAPWC_Lite_Settings_Page {
             </p>
         </form>
 
-        <div class="sapwc-lite-pro-features-preview" style="margin-top:30px;padding:20px;background:#f9f9f9;border:1px solid #ddd;border-radius:8px;">
-            <h3 style="margin-top:0;"><?php esc_html_e( 'PRO Features Available', 'sap-woo-suite-lite' ); ?></h3>
-            <ul style="list-style:disc;margin-left:20px;">
+        <div class="sapwc-lite-pro-features-preview">
+            <h3><?php esc_html_e( 'PRO Features Available', 'sap-woo-suite-lite' ); ?></h3>
+            <ul>
                 <li><strong><?php esc_html_e( 'Full Product Import', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Import products from SAP with images, attributes, variations', 'sap-woo-suite-lite' ); ?></li>
                 <li><strong><?php esc_html_e( 'Order Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Automatically send orders to SAP as Sales Orders', 'sap-woo-suite-lite' ); ?></li>
                 <li><strong><?php esc_html_e( 'Customer Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Create Business Partners from WooCommerce customers', 'sap-woo-suite-lite' ); ?></li>
@@ -481,7 +481,7 @@ class SAPWC_Lite_Settings_Page {
     public function render_logs_page() {
         $logs = SAPWC_Lite_Logger::get_logs( 100 );
         ?>
-        <div class="wrap">
+        <div class="wrap sapwc-wrap">
             <h1><?php esc_html_e( 'SAP Woo Suite Lite - Logs', 'sap-woo-suite-lite' ); ?></h1>
 
             <table class="widefat striped">

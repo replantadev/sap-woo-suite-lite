@@ -1,148 +1,811 @@
 /**
- * SAP Woo Suite Lite - Admin Styles
+ * SAP Woo Suite Lite — Design System
+ *
+ * Lightweight, elegant admin UI built on CSS custom properties.
+ * Shared design tokens with SAP Woo Suite PRO.
+ *
+ * @package SAPWC_Lite
+ * @since   1.1.0
  */
 
-.sapwc-lite-wrap {
-    max-width: 1200px;
+/* --- Design Tokens -------------------------------------------------------- */
+
+:root {
+    /* Brand */
+    --sapwc-brand:        #2563eb;
+    --sapwc-brand-light:  #dbeafe;
+    --sapwc-brand-dark:   #1e40af;
+
+    /* Lite accent (teal) */
+    --sapwc-lite-accent:  #41999f;
+    --sapwc-lite-accent-dark: #357a7f;
+
+    /* Neutrals */
+    --sapwc-gray-50:      #f8fafc;
+    --sapwc-gray-100:     #f1f5f9;
+    --sapwc-gray-200:     #e2e8f0;
+    --sapwc-gray-300:     #cbd5e1;
+    --sapwc-gray-400:     #94a3b8;
+    --sapwc-gray-500:     #64748b;
+    --sapwc-gray-600:     #475569;
+    --sapwc-gray-700:     #334155;
+    --sapwc-gray-800:     #1e293b;
+    --sapwc-gray-900:     #0f172a;
+
+    /* Status */
+    --sapwc-success:      #059669;
+    --sapwc-success-bg:   #ecfdf5;
+    --sapwc-warning:      #d97706;
+    --sapwc-warning-bg:   #fffbeb;
+    --sapwc-danger:       #dc2626;
+    --sapwc-danger-bg:    #fef2f2;
+    --sapwc-info:         #0284c7;
+    --sapwc-info-bg:      #f0f9ff;
+
+    /* Spacing */
+    --sapwc-space-xs:     4px;
+    --sapwc-space-sm:     8px;
+    --sapwc-space-md:     16px;
+    --sapwc-space-lg:     24px;
+    --sapwc-space-xl:     32px;
+    --sapwc-space-2xl:    48px;
+
+    /* Radius */
+    --sapwc-radius-sm:    4px;
+    --sapwc-radius-md:    8px;
+    --sapwc-radius-lg:    12px;
+    --sapwc-radius-xl:    16px;
+    --sapwc-radius-full:  9999px;
+
+    /* Shadows */
+    --sapwc-shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.04);
+    --sapwc-shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --sapwc-shadow-md:    0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --sapwc-shadow-lg:    0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+    /* Typography */
+    --sapwc-font-sans:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    --sapwc-font-mono:    "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+    --sapwc-text-xs:      11px;
+    --sapwc-text-sm:      12px;
+    --sapwc-text-base:    13px;
+    --sapwc-text-md:      14px;
+    --sapwc-text-lg:      16px;
+    --sapwc-text-xl:      20px;
+    --sapwc-text-2xl:     24px;
+
+    /* Transitions */
+    --sapwc-ease:         cubic-bezier(0.4, 0, 0.2, 1);
+    --sapwc-duration:     150ms;
 }
 
-.sapwc-lite-logo {
-    font-weight: 600;
+
+/* --- Base Layout ---------------------------------------------------------- */
+
+.sapwc-wrap {
+    max-width: 1200px;
+    margin: 20px 20px 20px 0;
+    font-family: var(--sapwc-font-sans);
+    color: var(--sapwc-gray-800);
+    -webkit-font-smoothing: antialiased;
 }
+
+.sapwc-wrap *,
+.sapwc-wrap *::before,
+.sapwc-wrap *::after {
+    box-sizing: border-box;
+}
+
+.sapwc-wrap h1 {
+    font-size: var(--sapwc-text-2xl);
+    font-weight: 700;
+    color: var(--sapwc-gray-900);
+    margin: 0 0 var(--sapwc-space-sm) 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+
+/* --- Version Badge -------------------------------------------------------- */
 
 .sapwc-lite-version {
-    font-size: 12px;
-    font-weight: normal;
-    color: #666;
-    margin-left: 8px;
+    font-size: var(--sapwc-text-xs);
+    font-weight: 500;
+    color: var(--sapwc-gray-400);
+    margin-left: var(--sapwc-space-sm);
+    padding: 2px 8px;
+    background: var(--sapwc-gray-100);
+    border-radius: var(--sapwc-radius-full);
 }
 
-/* PRO Banner */
+
+/* --- PRO Upgrade Banner --------------------------------------------------- */
+
 .sapwc-lite-pro-banner {
-    background: linear-gradient(135deg, #41999f 0%, #357a7f 100%);
+    background: linear-gradient(135deg, var(--sapwc-lite-accent) 0%, var(--sapwc-lite-accent-dark) 100%);
     color: #fff;
-    padding: 16px 24px;
-    border-radius: 8px;
+    padding: var(--sapwc-space-md) var(--sapwc-space-lg);
+    border-radius: var(--sapwc-radius-lg);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: var(--sapwc-space-lg) 0;
+    box-shadow: var(--sapwc-shadow-sm);
 }
 
 .sapwc-lite-pro-content strong {
     display: block;
-    font-size: 14px;
+    font-size: var(--sapwc-text-md);
 }
 
 .sapwc-lite-pro-content p {
-    margin: 4px 0 0;
-    font-size: 13px;
+    margin: var(--sapwc-space-xs) 0 0;
+    font-size: var(--sapwc-text-base);
     opacity: 0.9;
 }
 
 .sapwc-lite-pro-banner .button-primary {
     background: #fff;
-    color: #41999f;
+    color: var(--sapwc-lite-accent);
     border: none;
     font-weight: 600;
+    border-radius: var(--sapwc-radius-md);
+    padding: 8px 20px;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    text-decoration: none;
 }
 
 .sapwc-lite-pro-banner .button-primary:hover {
-    background: #f0f0f0;
-    color: #357a7f;
+    background: var(--sapwc-gray-50);
+    color: var(--sapwc-lite-accent-dark);
+    transform: translateY(-1px);
 }
 
-/* Tabs */
+
+/* --- Tab Navigation ------------------------------------------------------- */
+
+.sapwc-wrap .nav-tab-wrapper {
+    border-bottom: 2px solid var(--sapwc-gray-200);
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.sapwc-wrap .nav-tab {
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: var(--sapwc-radius-md) var(--sapwc-radius-md) 0 0;
+    padding: 10px 20px;
+    font-size: var(--sapwc-text-md);
+    font-weight: 500;
+    color: var(--sapwc-gray-500);
+    background: transparent;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    margin-bottom: -2px;
+    text-decoration: none;
+}
+
+.sapwc-wrap .nav-tab:hover {
+    color: var(--sapwc-gray-700);
+    background: var(--sapwc-gray-50);
+}
+
+.sapwc-wrap .nav-tab-active,
+.sapwc-wrap .nav-tab-active:hover {
+    color: var(--sapwc-brand);
+    background: #fff;
+    border-color: var(--sapwc-gray-200);
+    border-bottom-color: #fff;
+    font-weight: 600;
+}
+
+
+/* --- Tab Content ---------------------------------------------------------- */
+
 .sapwc-lite-content {
     background: #fff;
-    border: 1px solid #c3c4c7;
+    border: 1px solid var(--sapwc-gray-200);
     border-top: none;
-    padding: 24px;
-    margin-top: -1px;
+    border-radius: 0 0 var(--sapwc-radius-lg) var(--sapwc-radius-lg);
+    padding: var(--sapwc-space-lg);
+    margin-top: 0;
+    box-shadow: var(--sapwc-shadow-xs);
 }
 
-/* Form Tables */
-.sapwc-lite-content .form-table th {
-    padding-left: 0;
+
+/* --- Form Tables ---------------------------------------------------------- */
+
+.sapwc-wrap .form-table {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.sapwc-wrap .form-table th {
+    padding: var(--sapwc-space-md) var(--sapwc-space-lg) var(--sapwc-space-md) 0;
     width: 200px;
+    font-weight: 500;
+    color: var(--sapwc-gray-700);
+    font-size: var(--sapwc-text-base);
+    vertical-align: top;
 }
 
-.sapwc-lite-content .form-table input[type="text"],
-.sapwc-lite-content .form-table input[type="url"],
-.sapwc-lite-content .form-table input[type="password"] {
+.sapwc-wrap .form-table td {
+    padding: var(--sapwc-space-md) 0;
+}
+
+.sapwc-wrap .form-table input[type="text"],
+.sapwc-wrap .form-table input[type="url"],
+.sapwc-wrap .form-table input[type="password"] {
     width: 100%;
     max-width: 400px;
+    padding: 8px 12px;
+    font-size: var(--sapwc-text-md);
+    border: 1px solid var(--sapwc-gray-300);
+    border-radius: var(--sapwc-radius-md);
+    transition: border-color var(--sapwc-duration) var(--sapwc-ease),
+                box-shadow var(--sapwc-duration) var(--sapwc-ease);
+    color: var(--sapwc-gray-800);
 }
 
-/* Buttons */
+.sapwc-wrap .form-table input[type="text"]:focus,
+.sapwc-wrap .form-table input[type="url"]:focus,
+.sapwc-wrap .form-table input[type="password"]:focus {
+    border-color: var(--sapwc-brand);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.sapwc-wrap .form-table select {
+    padding: 8px 12px;
+    font-size: var(--sapwc-text-md);
+    border: 1px solid var(--sapwc-gray-300);
+    border-radius: var(--sapwc-radius-md);
+    transition: border-color var(--sapwc-duration) var(--sapwc-ease),
+                box-shadow var(--sapwc-duration) var(--sapwc-ease);
+    color: var(--sapwc-gray-800);
+    min-width: 200px;
+}
+
+.sapwc-wrap .form-table select:focus {
+    border-color: var(--sapwc-brand);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.sapwc-wrap .form-table input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: var(--sapwc-space-sm);
+    accent-color: var(--sapwc-brand);
+}
+
+.sapwc-wrap .form-table .description {
+    color: var(--sapwc-gray-500);
+    font-style: normal;
+    margin-top: var(--sapwc-space-xs);
+    display: block;
+    font-size: var(--sapwc-text-sm);
+}
+
+
+/* --- Buttons -------------------------------------------------------------- */
+
+.sapwc-wrap .button,
+.sapwc-wrap .button-secondary {
+    border: 1px solid var(--sapwc-gray-300);
+    border-radius: var(--sapwc-radius-md);
+    background: #fff;
+    color: var(--sapwc-gray-700);
+    font-size: var(--sapwc-text-base);
+    font-weight: 500;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    line-height: 1.4;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sapwc-space-xs);
+}
+
+.sapwc-wrap .button:hover,
+.sapwc-wrap .button-secondary:hover {
+    background: var(--sapwc-gray-50);
+    border-color: var(--sapwc-gray-400);
+    color: var(--sapwc-gray-900);
+}
+
+.sapwc-wrap .button-primary {
+    background: var(--sapwc-brand);
+    border-color: var(--sapwc-brand);
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 20px;
+    font-size: var(--sapwc-text-base);
+    border-radius: var(--sapwc-radius-md);
+    cursor: pointer;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.15);
+}
+
+.sapwc-wrap .button-primary:hover {
+    background: var(--sapwc-brand-dark);
+    border-color: var(--sapwc-brand-dark);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.sapwc-wrap .button-primary:disabled,
+.sapwc-wrap .button:disabled {
+    background: var(--sapwc-gray-200);
+    border-color: var(--sapwc-gray-200);
+    color: var(--sapwc-gray-400);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 #sapwc-lite-test-connection,
 #sapwc-lite-sync-now {
-    margin-left: 8px;
+    margin-left: var(--sapwc-space-sm);
 }
+
+
+/* --- Status Results ------------------------------------------------------- */
 
 #sapwc-lite-test-result,
 #sapwc-lite-sync-result {
-    margin-left: 12px;
-    font-weight: 500;
+    margin-left: var(--sapwc-space-md);
+    font-weight: 600;
+    font-size: var(--sapwc-text-base);
 }
 
 #sapwc-lite-test-result.success,
 #sapwc-lite-sync-result.success {
-    color: #00a32a;
+    color: var(--sapwc-success);
 }
 
 #sapwc-lite-test-result.error,
 #sapwc-lite-sync-result.error {
-    color: #dc3545;
+    color: var(--sapwc-danger);
 }
 
-/* Logs */
+
+/* --- Tables (widefat for logs) -------------------------------------------- */
+
+.sapwc-wrap table.widefat,
+.sapwc-wrap table.widefat.striped {
+    border: 1px solid var(--sapwc-gray-200);
+    border-radius: var(--sapwc-radius-lg);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    width: 100%;
+    font-size: var(--sapwc-text-base);
+    background: #fff;
+    box-shadow: var(--sapwc-shadow-xs);
+}
+
+.sapwc-wrap table.widefat thead th {
+    background: var(--sapwc-gray-50);
+    border-bottom: 1px solid var(--sapwc-gray-200);
+    color: var(--sapwc-gray-600);
+    font-weight: 600;
+    font-size: var(--sapwc-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--sapwc-space-sm) var(--sapwc-space-md);
+    white-space: nowrap;
+}
+
+.sapwc-wrap table.widefat tbody td {
+    padding: var(--sapwc-space-sm) var(--sapwc-space-md);
+    border-bottom: 1px solid var(--sapwc-gray-100);
+    color: var(--sapwc-gray-700);
+    vertical-align: middle;
+}
+
+.sapwc-wrap table.widefat tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sapwc-wrap table.widefat tbody tr:hover td {
+    background: var(--sapwc-gray-50);
+}
+
+.sapwc-wrap table.widefat.striped > tbody > :nth-child(odd) {
+    background: transparent;
+}
+
+.sapwc-wrap table.widefat.striped > tbody > :nth-child(even) {
+    background: var(--sapwc-gray-50);
+}
+
+
+/* --- Log Level Badges ----------------------------------------------------- */
+
+.sapwc-lite-status-success,
 .sapwc-lite-level-success {
-    background: #d4edda;
-    color: #155724;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 11px;
+    background: var(--sapwc-success-bg);
+    color: var(--sapwc-success);
+    padding: 2px 10px;
+    border-radius: var(--sapwc-radius-full);
+    font-size: var(--sapwc-text-xs);
+    font-weight: 600;
+    display: inline-block;
 }
 
+.sapwc-lite-status-error,
 .sapwc-lite-level-error {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 11px;
+    background: var(--sapwc-danger-bg);
+    color: var(--sapwc-danger);
+    padding: 2px 10px;
+    border-radius: var(--sapwc-radius-full);
+    font-size: var(--sapwc-text-xs);
+    font-weight: 600;
+    display: inline-block;
 }
 
+.sapwc-lite-status-warning,
 .sapwc-lite-level-warning {
-    background: #fff3cd;
-    color: #856404;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 11px;
+    background: var(--sapwc-warning-bg);
+    color: var(--sapwc-warning);
+    padding: 2px 10px;
+    border-radius: var(--sapwc-radius-full);
+    font-size: var(--sapwc-text-xs);
+    font-weight: 600;
+    display: inline-block;
 }
 
+.sapwc-lite-status-info,
 .sapwc-lite-level-info {
-    background: #d1ecf1;
-    color: #0c5460;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 11px;
+    background: var(--sapwc-info-bg);
+    color: var(--sapwc-info);
+    padding: 2px 10px;
+    border-radius: var(--sapwc-radius-full);
+    font-size: var(--sapwc-text-xs);
+    font-weight: 600;
+    display: inline-block;
 }
 
-/* Loading spinner */
+
+/* --- WP Notices Override -------------------------------------------------- */
+
+.sapwc-wrap .notice {
+    border-radius: var(--sapwc-radius-md);
+    border-left-width: 4px;
+    box-shadow: var(--sapwc-shadow-xs);
+}
+
+
+/* --- Info Box (Sync Tab) -------------------------------------------------- */
+
+.sapwc-wrap .sapwc-info-box {
+    background: var(--sapwc-info-bg);
+    border: 1px solid #bae6fd;
+    border-radius: var(--sapwc-radius-md);
+    padding: var(--sapwc-space-md) var(--sapwc-space-lg);
+    margin: var(--sapwc-space-md) 0;
+    color: #075985;
+    font-size: var(--sapwc-text-base);
+}
+
+.sapwc-wrap .sapwc-info-box strong {
+    color: #0c4a6e;
+}
+
+
+/* --- PRO Features Preview (Sync Tab bottom) ------------------------------- */
+
+.sapwc-lite-pro-features-preview {
+    margin-top: var(--sapwc-space-xl);
+    padding: var(--sapwc-space-lg);
+    background: var(--sapwc-gray-50);
+    border: 1px solid var(--sapwc-gray-200);
+    border-radius: var(--sapwc-radius-lg);
+}
+
+.sapwc-lite-pro-features-preview h3 {
+    margin-top: 0;
+    color: var(--sapwc-gray-800);
+    font-size: var(--sapwc-text-lg);
+}
+
+.sapwc-lite-pro-features-preview ul {
+    list-style: none;
+    margin: 0 0 var(--sapwc-space-lg) 0;
+    padding: 0;
+}
+
+.sapwc-lite-pro-features-preview li {
+    padding: var(--sapwc-space-sm) 0;
+    border-bottom: 1px solid var(--sapwc-gray-100);
+    color: var(--sapwc-gray-600);
+    font-size: var(--sapwc-text-base);
+}
+
+.sapwc-lite-pro-features-preview li:last-child {
+    border-bottom: none;
+}
+
+.sapwc-lite-pro-features-preview li strong {
+    color: var(--sapwc-gray-800);
+}
+
+
+/* --- PRO Features Page ---------------------------------------------------- */
+
+.sapwc-pro-hero {
+    background: linear-gradient(135deg, var(--sapwc-lite-accent) 0%, var(--sapwc-lite-accent-dark) 100%);
+    color: #fff;
+    padding: 40px;
+    border-radius: var(--sapwc-radius-lg);
+    text-align: center;
+    margin: var(--sapwc-space-lg) 0;
+    box-shadow: var(--sapwc-shadow-md);
+}
+
+.sapwc-pro-hero h2 {
+    color: #fff;
+    margin: 0 0 10px;
+    font-size: var(--sapwc-text-xl);
+}
+
+.sapwc-pro-hero p {
+    font-size: var(--sapwc-text-lg);
+    margin: 0 0 var(--sapwc-space-lg);
+    opacity: 0.9;
+}
+
+.sapwc-pro-hero .button-hero {
+    background: #fff;
+    color: var(--sapwc-lite-accent);
+    border: none;
+    font-weight: 600;
+    border-radius: var(--sapwc-radius-md);
+    padding: 10px 24px;
+    font-size: var(--sapwc-text-md);
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    text-decoration: none;
+}
+
+.sapwc-pro-hero .button-hero:hover {
+    background: var(--sapwc-gray-50);
+    color: var(--sapwc-lite-accent-dark);
+    transform: translateY(-1px);
+}
+
+.sapwc-pro-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--sapwc-space-lg);
+    margin: var(--sapwc-space-xl) 0;
+}
+
+.sapwc-pro-feature-card {
+    background: #fff;
+    border: 1px solid var(--sapwc-gray-200);
+    border-radius: var(--sapwc-radius-lg);
+    padding: var(--sapwc-space-lg);
+    position: relative;
+    box-shadow: var(--sapwc-shadow-sm);
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+}
+
+.sapwc-pro-feature-card:hover {
+    box-shadow: var(--sapwc-shadow-md);
+    border-color: var(--sapwc-gray-300);
+    transform: translateY(-2px);
+}
+
+.sapwc-pro-feature-card::before {
+    content: "PRO";
+    position: absolute;
+    top: var(--sapwc-space-md);
+    right: var(--sapwc-space-md);
+    background: var(--sapwc-lite-accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--sapwc-radius-sm);
+    letter-spacing: 0.05em;
+}
+
+.sapwc-pro-feature-icon {
+    width: 48px;
+    height: 48px;
+    background: #f0f7f7;
+    border-radius: var(--sapwc-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--sapwc-space-md);
+}
+
+.sapwc-pro-feature-icon .dashicons {
+    font-family: dashicons;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--sapwc-lite-accent);
+}
+
+.sapwc-pro-feature-card h3 {
+    margin: 0 0 var(--sapwc-space-sm);
+    font-size: var(--sapwc-text-lg);
+    color: var(--sapwc-gray-800);
+}
+
+.sapwc-pro-feature-card p {
+    margin: 0 0 var(--sapwc-space-md);
+    color: var(--sapwc-gray-600);
+    font-size: var(--sapwc-text-base);
+    line-height: 1.6;
+}
+
+.sapwc-pro-feature-lite {
+    background: var(--sapwc-warning-bg);
+    border: 1px solid #fde68a;
+    border-radius: var(--sapwc-radius-sm);
+    padding: var(--sapwc-space-sm) var(--sapwc-space-md);
+    font-size: var(--sapwc-text-sm);
+    color: var(--sapwc-warning);
+    font-weight: 500;
+}
+
+.sapwc-pro-feature-lite .dashicons {
+    font-family: dashicons;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: var(--sapwc-space-xs);
+}
+
+.sapwc-pro-cta {
+    background: linear-gradient(135deg, #1e2f23 0%, #2a3f30 100%);
+    border-radius: var(--sapwc-radius-xl);
+    padding: 40px;
+    text-align: center;
+    margin-top: var(--sapwc-space-xl);
+    border: 2px solid #93f1c9;
+    position: relative;
+    overflow: hidden;
+}
+
+.sapwc-pro-cta::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(147, 241, 201, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.sapwc-pro-cta h3 {
+    margin: 0 0 var(--sapwc-space-md);
+    color: #93f1c9;
+    font-size: var(--sapwc-text-2xl);
+    font-weight: 600;
+}
+
+.sapwc-pro-cta p {
+    margin: 0 0 var(--sapwc-space-lg);
+    color: #fff;
+    font-size: var(--sapwc-text-lg);
+    opacity: 0.9;
+}
+
+.sapwc-pro-cta .sapwc-cta-buttons {
+    display: flex;
+    gap: var(--sapwc-space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sapwc-pro-cta .button-cta-primary {
+    background: var(--sapwc-lite-accent);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: var(--sapwc-text-md);
+    font-weight: 600;
+    border-radius: var(--sapwc-radius-md);
+    text-decoration: none;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    box-shadow: 0 4px 15px rgba(65, 153, 159, 0.3);
+    display: inline-block;
+}
+
+.sapwc-pro-cta .button-cta-primary:hover {
+    background: var(--sapwc-lite-accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(65, 153, 159, 0.4);
+    color: #fff;
+}
+
+.sapwc-pro-cta .button-cta-secondary {
+    background: transparent;
+    color: #93f1c9;
+    border: 2px solid #93f1c9;
+    padding: 10px 26px;
+    font-size: var(--sapwc-text-md);
+    font-weight: 600;
+    border-radius: var(--sapwc-radius-md);
+    text-decoration: none;
+    transition: all var(--sapwc-duration) var(--sapwc-ease);
+    display: inline-block;
+}
+
+.sapwc-pro-cta .button-cta-secondary:hover {
+    background: #93f1c9;
+    color: #1e2f23;
+}
+
+
+/* --- Loading Spinner ------------------------------------------------------ */
+
 .sapwc-lite-loading {
     display: inline-block;
     width: 16px;
     height: 16px;
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid #41999f;
+    border: 2px solid var(--sapwc-gray-200);
+    border-top-color: var(--sapwc-brand);
     border-radius: 50%;
-    animation: sapwc-lite-spin 1s linear infinite;
+    animation: sapwc-spin 0.6s linear infinite;
     vertical-align: middle;
-    margin-left: 8px;
+    margin-left: var(--sapwc-space-sm);
 }
 
-@keyframes sapwc-lite-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes sapwc-spin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* --- Dashicons Fix -------------------------------------------------------- */
+
+.sapwc-wrap .dashicons,
+.sapwc-wrap [class^="dashicons-"],
+.sapwc-wrap [class*=" dashicons-"] {
+    font-family: dashicons;
+}
+
+
+/* --- Responsive ----------------------------------------------------------- */
+
+@media (max-width: 782px) {
+    .sapwc-lite-pro-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--sapwc-space-md);
+    }
+
+    .sapwc-wrap .form-table th {
+        width: auto;
+        display: block;
+        padding-bottom: var(--sapwc-space-xs);
+    }
+
+    .sapwc-wrap .form-table td {
+        display: block;
+        padding-top: 0;
+    }
+
+    .sapwc-pro-hero {
+        padding: var(--sapwc-space-lg);
+    }
+
+    .sapwc-pro-cta {
+        padding: var(--sapwc-space-lg);
+    }
+}
+
+
+/* --- Print ---------------------------------------------------------------- */
+
+@media print {
+    .sapwc-wrap { max-width: 100%; }
+    .sapwc-lite-pro-banner,
+    .sapwc-pro-cta { display: none; }
 }
