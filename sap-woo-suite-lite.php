@@ -13,7 +13,7 @@
  * Plugin Name:       SAP Woo Suite Lite
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
- * Version: 1.2.12
+ * Version: 1.2.13
  * Requires at least: 5.8
  * Tested up to:      6.9
  * Requires PHP:      7.4
