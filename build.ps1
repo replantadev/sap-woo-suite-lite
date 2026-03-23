@@ -14,7 +14,7 @@ if ($content -match 'Version:\s*([\d\.]+)') {
     exit 1
 }
 
-$ZipName  = "${WpOrgSlug}-v${Version}.zip"
+$ZipName  = "${WpOrgSlug}.zip"          # WP.org requires no version in filename
 $BuildDir = "$env:TEMP\${WpOrgSlug}-build"
 $DistDir  = ".\dist"
 
@@ -70,8 +70,8 @@ if (Test-Path "${PluginSlug}.php") {
     Copy-Item "${PluginSlug}.php" -Destination "$target\${WpOrgSlug}.php"
 }
 
-# Carpetas
-$dirs = @("admin", "includes", "assets", "languages")
+# Carpetas (sin assets/ - los banners/icons/screenshots se suben por SVN aparte)
+$dirs = @("admin", "includes", "languages")
 foreach ($d in $dirs) {
     if (Test-Path $d) { Copy-Item $d -Destination "$target\$d" -Recurse }
 }
