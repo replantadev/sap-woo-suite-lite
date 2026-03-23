@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Spanish (Spain) translations for SAP Woo Suite Lite.
  *
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-    'domain'       => 'sap-woo-suite-lite',
+    'domain'       => 'replanta-connector-sap-woocommerce',
     'plural-forms' => 'nplurals=2; plural=(n != 1);',
     'messages'     => array(
 

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Stock and Price Sync for SAP Woo Suite Lite
+ * Stock and Price Sync for Replanta Connector with SAP for WooCommerce
  *
  * @package SAPWC_Lite
  * @since 1.0.0

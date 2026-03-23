@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * SAP Woo Suite Lite
+ * Replanta Connector with SAP for WooCommerce
  *
  * Connect WooCommerce with SAP Business One for stock and price synchronization.
  *
@@ -10,10 +10,10 @@
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name:       SAP Woo Suite Lite
+ * Plugin Name:       Replanta Connector with SAP for WooCommerce
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
- * Version: 1.2.16
+ * Version: 1.2.17
  * Requires at least: 5.8
  * Tested up to:      6.9
  * Requires PHP:      7.4
@@ -21,7 +21,7 @@
  * Author URI:        https://replanta.net
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       sap-woo-suite-lite
+ * Text Domain:       replanta-connector-sap-woocommerce
  * Domain Path:       /languages
  * WC requires at least: 6.0
  * WC tested up to:   9.6
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ──────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────
-define( 'SAPWC_LITE_VERSION', '1.2.3' );
+define( 'SAPWC_LITE_VERSION', '1.2.17' );
 define( 'SAPWC_LITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SAPWC_LITE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SAPWC_LITE_FILE', __FILE__ );
@@ -82,8 +82,8 @@ function sapwc_lite_pro_active_notice() {
     ?>
     <div class="notice notice-success is-dismissible">
         <p>
-            <strong><?php esc_html_e( 'SAP Woo Suite Lite', 'sap-woo-suite-lite' ); ?></strong>
-            <?php esc_html_e( 'has been deactivated. You have the PRO version active - all your settings have been preserved!', 'sap-woo-suite-lite' ); ?>
+            <strong><?php esc_html_e( 'Replanta Connector', 'replanta-connector-sap-woocommerce' ); ?></strong>
+            <?php esc_html_e( 'has been deactivated. You have the PRO version active - all your settings have been preserved!', 'replanta-connector-sap-woocommerce' ); ?>
         </p>
     </div>
     <?php
@@ -103,8 +103,8 @@ function sapwc_lite_activate() {
     if ( is_plugin_active( 'sap-woo-suite/sap-woo-suite.php' ) ) {
         deactivate_plugins( SAPWC_LITE_BASENAME );
         wp_die(
-            esc_html__( 'SAP Woo Suite PRO is already active. The Lite version is not needed - your settings will work with PRO.', 'sap-woo-suite-lite' ),
-            esc_html__( 'Plugin Activation Error', 'sap-woo-suite-lite' ),
+            esc_html__( 'SAP Woo Suite PRO is already active. The Lite version is not needed - your settings will work with PRO.', 'replanta-connector-sap-woocommerce' ),
+            esc_html__( 'Plugin Activation Error', 'replanta-connector-sap-woocommerce' ),
             array( 'back_link' => true )
         );
     }
@@ -151,7 +151,7 @@ function sapwc_lite_load_dependencies() {
     SAPWC_Lite_Stock_Sync::init();
 
     /**
-     * Fires when SAP Woo Suite Lite is fully loaded.
+     * Fires when Replanta Connector with SAP for WooCommerce is fully loaded.
      *
      * @since 1.0.0
      * @param string $version Plugin version.
@@ -161,7 +161,7 @@ function sapwc_lite_load_dependencies() {
 add_action( 'plugins_loaded', 'sapwc_lite_load_dependencies' );
 
 /**
- * Hide other plugin notices on SAP Woo Suite Lite admin pages.
+ * Hide other plugin notices on Replanta Connector with SAP for WooCommerce admin pages.
  *
  * @since 1.0.0
  */
@@ -201,8 +201,8 @@ function sapwc_lite_woocommerce_missing_notice() {
     ?>
     <div class="notice notice-error">
         <p>
-            <strong><?php esc_html_e( 'SAP Woo Suite Lite', 'sap-woo-suite-lite' ); ?></strong>
-            <?php esc_html_e( 'requires WooCommerce to be installed and activated.', 'sap-woo-suite-lite' ); ?>
+            <strong><?php esc_html_e( 'Replanta Connector', 'replanta-connector-sap-woocommerce' ); ?></strong>
+            <?php esc_html_e( 'requires WooCommerce to be installed and activated.', 'replanta-connector-sap-woocommerce' ); ?>
         </p>
     </div>
     <?php
@@ -219,13 +219,13 @@ function sapwc_lite_plugin_action_links( $links ) {
     $settings_link = sprintf(
         '<a href="%s">%s</a>',
         esc_url( admin_url( 'admin.php?page=sapwc-lite' ) ),
-        esc_html__( 'Dashboard', 'sap-woo-suite-lite' )
+        esc_html__( 'Dashboard', 'replanta-connector-sap-woocommerce' )
     );
 
     $pro_link = sprintf(
         '<a href="%s" target="_blank" style="color:#41999f;font-weight:bold;">%s</a>',
         esc_url( 'https://replanta.net/conector-sap-woocommerce/' ),
-        esc_html__( 'Upgrade to PRO', 'sap-woo-suite-lite' )
+        esc_html__( 'Upgrade to PRO', 'replanta-connector-sap-woocommerce' )
     );
 
     array_unshift( $links, $settings_link, $pro_link );
@@ -279,13 +279,13 @@ function sapwc_lite_admin_bar_status( $wp_admin_bar ) {
     $conn  = sapwc_lite_get_connection();
     $color = $conn ? '#41999f' : '#dc3545';
     $title = $conn
-        ? __( 'SAP Lite: Connected', 'sap-woo-suite-lite' )
-        : __( 'SAP Lite: Not configured', 'sap-woo-suite-lite' );
+        ? __( 'SAP Lite: Connected', 'replanta-connector-sap-woocommerce' )
+        : __( 'SAP Lite: Not configured', 'replanta-connector-sap-woocommerce' );
 
     $wp_admin_bar->add_node(
         array(
             'id'    => 'sapwc-lite-status',
-            'title' => '<span style="color:' . esc_attr( $color ) . ';">&#9679;</span> ' . esc_html__( 'SAP Lite', 'sap-woo-suite-lite' ),
+            'title' => '<span style="color:' . esc_attr( $color ) . ';">&#9679;</span> ' . esc_html__( 'SAP Lite', 'replanta-connector-sap-woocommerce' ),
             'href'  => esc_url( admin_url( 'admin.php?page=sapwc-lite' ) ),
             'meta'  => array( 'title' => $title ),
         )
@@ -296,11 +296,11 @@ function sapwc_lite_admin_bar_status( $wp_admin_bar ) {
         array(
             'parent' => 'sapwc-lite-status',
             'id'     => 'sapwc-lite-upgrade',
-            'title'  => '<span style="color:#41999f;">&#9733;</span> ' . esc_html__( 'Upgrade to PRO', 'sap-woo-suite-lite' ),
+            'title'  => '<span style="color:#41999f;">&#9733;</span> ' . esc_html__( 'Upgrade to PRO', 'replanta-connector-sap-woocommerce' ),
             'href'   => esc_url( 'https://replanta.net/conector-sap-woocommerce/' ),
             'meta'   => array(
                 'target' => '_blank',
-                'title'  => __( 'Sync orders, products, customers and more with SAP', 'sap-woo-suite-lite' ),
+                'title'  => __( 'Sync orders, products, customers and more with SAP', 'replanta-connector-sap-woocommerce' ),
             ),
         )
     );

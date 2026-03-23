@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Uninstall SAP Woo Suite Lite
+ * Uninstall Replanta Connector with SAP for WooCommerce
  *
  * Fired when the plugin is uninstalled.
  * IMPORTANT: Does NOT delete shared options with PRO version to preserve

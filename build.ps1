@@ -1,8 +1,9 @@
-# SAP Woo Suite Lite - Build ZIP para WordPress.org
+# Replanta Connector with SAP for WooCommerce - Build ZIP para WordPress.org
 # Uso: .\build.ps1
 
-$PluginSlug = "sap-woo-suite-lite"
-$MainFile   = ".\${PluginSlug}.php"
+$PluginSlug   = "sap-woo-suite-lite"           # nombre del folder local y archivo .php
+$WpOrgSlug    = "replanta-connector-sap-woocommerce"  # slug aprobado por WP.org
+$MainFile     = ".\${PluginSlug}.php"
 
 # Leer version del plugin
 $content = Get-Content $MainFile -Raw
@@ -13,12 +14,13 @@ if ($content -match 'Version:\s*([\d\.]+)') {
     exit 1
 }
 
-$ZipName  = "${PluginSlug}-v${Version}.zip"
-$BuildDir = "$env:TEMP\${PluginSlug}-build"
+$ZipName  = "${WpOrgSlug}-v${Version}.zip"
+$BuildDir = "$env:TEMP\${WpOrgSlug}-build"
 $DistDir  = ".\dist"
 
 Write-Host ""
-Write-Host "  SAP Woo Suite Lite - Build $Version" -ForegroundColor Cyan
+Write-Host "  Replanta Connector with SAP for WooCommerce - Build $Version" -ForegroundColor Cyan
+Write-Host "  WP.org ZIP slug: $WpOrgSlug" -ForegroundColor DarkGray
 Write-Host ""
 
 # PHP Lint
@@ -55,13 +57,17 @@ Write-Host "  [2/2] Construyendo $ZipName ..." -ForegroundColor Yellow
 
 if (Test-Path $BuildDir) { Remove-Item $BuildDir -Recurse -Force }
 
-$target = "$BuildDir\$PluginSlug"
+$target = "$BuildDir\$WpOrgSlug"
 New-Item -ItemType Directory -Path $target -Force | Out-Null
 
-# Archivos raiz
-$rootFiles = @("${PluginSlug}.php", "readme.txt", "uninstall.php", "LICENSE")
+# Archivos raiz (renombrar main PHP al slug WP.org)
+$rootFiles = @("readme.txt", "uninstall.php", "LICENSE")
 foreach ($f in $rootFiles) {
     if (Test-Path $f) { Copy-Item $f -Destination $target }
+}
+# Main PHP renombrado al slug WP.org
+if (Test-Path "${PluginSlug}.php") {
+    Copy-Item "${PluginSlug}.php" -Destination "$target\${WpOrgSlug}.php"
 }
 
 # Carpetas
@@ -78,13 +84,13 @@ if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
 # ZIP con forward slashes (compatible con Linux/PHP ZipArchive)
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-$buildRoot = (Get-Item "$BuildDir\$PluginSlug").FullName
+$buildRoot = (Get-Item "$BuildDir\$WpOrgSlug").FullName
 $archive   = [System.IO.Compression.ZipFile]::Open($zipPath, 'Create')
 try {
-    $archive.CreateEntry("$PluginSlug/") | Out-Null
+    $archive.CreateEntry("$WpOrgSlug/") | Out-Null
     Get-ChildItem $buildRoot -Recurse -File | ForEach-Object {
         $relPath   = $_.FullName.Substring($buildRoot.Length + 1).Replace('\', '/')
-        $entryName = "$PluginSlug/$relPath"
+        $entryName = "$WpOrgSlug/$relPath"
         [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
             $archive,
             $_.FullName,

@@ -1,11 +1,11 @@
-=== SAP Woo Suite Lite ===
+﻿=== Replanta Connector with SAP for WooCommerce ===
 Contributors: replanta
 Donate link: https://replanta.net/
 Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.9
+Stable tag: 1.2.17
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Connect WooCommerce with SAP Business One. Stock and prices sync via Service Lay
 
 == Description ==
 
-**SAP Woo Suite Lite** connects your WooCommerce store with SAP Business One, keeping your inventory stock and prices synchronized -- set it up once and forget about it.
+**Replanta Connector with SAP for WooCommerce** connects your WooCommerce store with SAP Business One, keeping your inventory stock and prices synchronized -- set it up once and forget about it.
 
 = Key Features =
 
@@ -58,7 +58,7 @@ Want your entire business connected to SAP? **SAP Woo Suite PRO** handles everyt
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/sap-woo-suite-lite` or install through WordPress plugins screen
+1. Upload the plugin files to `/wp-content/plugins/replanta-connector-sap-woocommerce` or install through WordPress plugins screen
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Go to **SAP Woo Lite > Settings** to configure your SAP connection
 4. Enter your Service Layer URL, username, password, and company database
@@ -74,7 +74,7 @@ SAP Business One 9.3 or higher with Service Layer enabled. Both HANA and SQL Ser
 
 = Do products need to exist in WooCommerce first? =
 
-Yes, SAP Woo Suite Lite syncs stock and prices to existing WooCommerce products. Products must have SKUs that match the ItemCode in SAP. For full product import, upgrade to PRO.
+Yes, Replanta Connector with SAP for WooCommerce syncs stock and prices to existing WooCommerce products. Products must have SKUs that match the ItemCode in SAP. For full product import, upgrade to PRO.
 
 = Can I sync orders to SAP? =
 
@@ -96,6 +96,9 @@ You can choose hourly, twice daily, or daily sync. Once configured, it runs in t
 4. PRO features - See what's available with the full version
 
 == Changelog ==
+
+= 1.2.17 =
+* Rename: Plugin renamed to Replanta Connector with SAP for WooCommerce for WordPress.org compliance
 
 = 1.2.3 - 2026-03-05 =
 * Fixed license file to match GPL-2.0-or-later declaration
@@ -134,6 +137,9 @@ You can choose hourly, twice daily, or daily sync. Once configured, it runs in t
 * PRO features preview page
 
 == Upgrade Notice ==
+
+= 1.2.17 =
+Plugin renamed to Replanta Connector with SAP for WooCommerce for WordPress.org compliance. No configuration changes required.
 
 = 1.2.3 =
 Coding standards and license compliance improvements for WP.org submission.

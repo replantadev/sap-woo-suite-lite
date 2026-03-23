@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Simple Logger for SAP Woo Suite Lite
+ * Simple Logger for Replanta Connector with SAP for WooCommerce
  *
  * Uses same table structure as PRO version (sapwc_logs) for seamless upgrade.
  *

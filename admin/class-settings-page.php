@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Admin Settings Page for SAP Woo Suite Lite
+ * Admin Settings Page for Replanta Connector with SAP for WooCommerce
  * Uses PRO-compatible option names for seamless upgrade
  *
  * @package SAPWC_Lite
@@ -31,8 +31,8 @@ class SAPWC_Lite_Settings_Page {
     public function add_menu() {
         add_submenu_page(
             'sapwc-lite',
-            __( 'Settings', 'sap-woo-suite-lite' ),
-            __( 'Settings', 'sap-woo-suite-lite' ),
+            __( 'Settings', 'replanta-connector-sap-woocommerce' ),
+            __( 'Settings', 'replanta-connector-sap-woocommerce' ),
             'manage_woocommerce',
             'sapwc-lite-settings',
             array( $this, 'render_page' )
@@ -40,8 +40,8 @@ class SAPWC_Lite_Settings_Page {
 
         add_submenu_page(
             'sapwc-lite',
-            __( 'Logs', 'sap-woo-suite-lite' ),
-            __( 'Logs', 'sap-woo-suite-lite' ),
+            __( 'Logs', 'replanta-connector-sap-woocommerce' ),
+            __( 'Logs', 'replanta-connector-sap-woocommerce' ),
             'manage_woocommerce',
             'sapwc-lite-logs',
             array( $this, 'render_logs_page' )
@@ -80,7 +80,7 @@ class SAPWC_Lite_Settings_Page {
             add_settings_error(
                 'sapwc_lite',
                 'connection_saved',
-                __( 'Connection settings saved.', 'sap-woo-suite-lite' ),
+                __( 'Connection settings saved.', 'replanta-connector-sap-woocommerce' ),
                 'success'
             );
 
@@ -104,7 +104,7 @@ class SAPWC_Lite_Settings_Page {
             add_settings_error(
                 'sapwc_lite',
                 'sync_saved',
-                __( 'Sync settings saved.', 'sap-woo-suite-lite' ),
+                __( 'Sync settings saved.', 'replanta-connector-sap-woocommerce' ),
                 'success'
             );
         }
@@ -168,14 +168,14 @@ class SAPWC_Lite_Settings_Page {
                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                 'nonce'    => wp_create_nonce( 'sapwc_lite_nonce' ),
                 'i18n'     => array(
-                    'testing'           => __( 'Testing...', 'sap-woo-suite-lite' ),
-                    'connected'         => __( 'Connected!', 'sap-woo-suite-lite' ),
-                    'connection_failed' => __( 'Connection failed', 'sap-woo-suite-lite' ),
-                    'request_failed'    => __( 'Request failed', 'sap-woo-suite-lite' ),
-                    'syncing'           => __( 'Syncing...', 'sap-woo-suite-lite' ),
-                    'products_updated'  => __( 'products updated', 'sap-woo-suite-lite' ),
-                    'sync_failed'       => __( 'Sync failed', 'sap-woo-suite-lite' ),
-                    'go_pro'            => __( 'Upgrade to PRO', 'sap-woo-suite-lite' ),
+                    'testing'           => __( 'Testing...', 'replanta-connector-sap-woocommerce' ),
+                    'connected'         => __( 'Connected!', 'replanta-connector-sap-woocommerce' ),
+                    'connection_failed' => __( 'Connection failed', 'replanta-connector-sap-woocommerce' ),
+                    'request_failed'    => __( 'Request failed', 'replanta-connector-sap-woocommerce' ),
+                    'syncing'           => __( 'Syncing...', 'replanta-connector-sap-woocommerce' ),
+                    'products_updated'  => __( 'products updated', 'replanta-connector-sap-woocommerce' ),
+                    'sync_failed'       => __( 'Sync failed', 'replanta-connector-sap-woocommerce' ),
+                    'go_pro'            => __( 'Upgrade to PRO', 'replanta-connector-sap-woocommerce' ),
                 ),
             )
         );
@@ -193,28 +193,28 @@ class SAPWC_Lite_Settings_Page {
         ?>
         <div class="wrap sapwc-wrap">
             <h1>
-                <span class="sapwc-lite-logo">SAP Woo Suite Lite</span>
+                <span class="sapwc-lite-logo">Replanta Connector</span>
                 <span class="sapwc-lite-version">v<?php echo esc_html( SAPWC_LITE_VERSION ); ?></span>
             </h1>
 
             <div class="sapwc-lite-pro-banner">
                 <div class="sapwc-lite-pro-content">
-                    <strong><?php esc_html_e( 'Sync your entire business with PRO', 'sap-woo-suite-lite' ); ?></strong>
-                    <p><?php esc_html_e( 'Orders, products, customers and multi-channel -- all connected to SAP.', 'sap-woo-suite-lite' ); ?></p>
+                    <strong><?php esc_html_e( 'Sync your entire business with PRO', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                    <p><?php esc_html_e( 'Orders, products, customers and multi-channel -- all connected to SAP.', 'replanta-connector-sap-woocommerce' ); ?></p>
                 </div>
                 <a href="https://replanta.net/conector-sap-woocommerce/" target="_blank" class="button button-primary">
-                    <?php esc_html_e( 'Upgrade to PRO', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Upgrade to PRO', 'replanta-connector-sap-woocommerce' ); ?>
                 </a>
             </div>
 
             <nav class="nav-tab-wrapper">
                 <a href="?page=sapwc-lite-settings&tab=connection"
                    class="nav-tab <?php echo esc_attr( 'connection' === $tab ? 'nav-tab-active' : '' ); ?>">
-                    <?php esc_html_e( 'Connection', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Connection', 'replanta-connector-sap-woocommerce' ); ?>
                 </a>
                 <a href="?page=sapwc-lite-settings&tab=sync"
                    class="nav-tab <?php echo esc_attr( 'sync' === $tab ? 'nav-tab-active' : '' ); ?>">
-                    <?php esc_html_e( 'Sync Settings', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Sync Settings', 'replanta-connector-sap-woocommerce' ); ?>
                 </a>
             </nav>
 
@@ -252,32 +252,32 @@ class SAPWC_Lite_Settings_Page {
 
             <table class="form-table">
                 <tr>
-                    <th><label for="sap_url"><?php esc_html_e( 'Service Layer URL', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sap_url"><?php esc_html_e( 'Service Layer URL', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <input type="url" id="sap_url" name="sap_url"
                                value="<?php echo esc_attr( $url ); ?>" class="regular-text"
                                placeholder="https://sap-server:50000" required>
                         <p class="description">
-                            <?php esc_html_e( 'SAP Business One Service Layer URL (without /b1s/v1)', 'sap-woo-suite-lite' ); ?>
+                            <?php esc_html_e( 'SAP Business One Service Layer URL (without /b1s/v1)', 'replanta-connector-sap-woocommerce' ); ?>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="sap_user"><?php esc_html_e( 'Username', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sap_user"><?php esc_html_e( 'Username', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <input type="text" id="sap_user" name="sap_user"
                                value="<?php echo esc_attr( $user ); ?>" class="regular-text" required>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="sap_pass"><?php esc_html_e( 'Password', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sap_pass"><?php esc_html_e( 'Password', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <input type="password" id="sap_pass" name="sap_pass"
                                value="<?php echo esc_attr( $pass ); ?>" class="regular-text" required>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="sap_db"><?php esc_html_e( 'Company Database', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sap_db"><?php esc_html_e( 'Company Database', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <input type="text" id="sap_db" name="sap_db"
                                value="<?php echo esc_attr( $db ); ?>" class="regular-text"
@@ -285,12 +285,12 @@ class SAPWC_Lite_Settings_Page {
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="sap_ssl"><?php esc_html_e( 'SSL Verification', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sap_ssl"><?php esc_html_e( 'SSL Verification', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <label>
                             <input type="checkbox" id="sap_ssl" name="sap_ssl"
                                    value="1" <?php checked( $ssl ); ?>>
-                            <?php esc_html_e( 'Verify SSL certificate (recommended for production)', 'sap-woo-suite-lite' ); ?>
+                            <?php esc_html_e( 'Verify SSL certificate (recommended for production)', 'replanta-connector-sap-woocommerce' ); ?>
                         </label>
                     </td>
                 </tr>
@@ -298,10 +298,10 @@ class SAPWC_Lite_Settings_Page {
 
             <p class="submit">
                 <button type="submit" class="button button-primary">
-                    <?php esc_html_e( 'Save Connection', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Save Connection', 'replanta-connector-sap-woocommerce' ); ?>
                 </button>
                 <button type="button" id="sapwc-lite-test-connection" class="button">
-                    <?php esc_html_e( 'Test Connection', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Test Connection', 'replanta-connector-sap-woocommerce' ); ?>
                 </button>
                 <span id="sapwc-lite-test-result"></span>
             </p>
@@ -338,15 +338,15 @@ class SAPWC_Lite_Settings_Page {
         $interval    = get_option( 'sapwc_stock_sync_interval', 'hourly' );
         $last_sync   = get_option( 'sapwc_stock_last_sync', '' );
         if ( empty( $last_sync ) ) {
-            $last_sync = __( 'Never', 'sap-woo-suite-lite' );
+            $last_sync = __( 'Never', 'replanta-connector-sap-woocommerce' );
         }
 
         if ( ! $conn ) :
             ?>
             <div class="notice notice-warning">
                 <p>
-                    <strong><?php esc_html_e( 'Configure your SAP connection first', 'sap-woo-suite-lite' ); ?></strong>
-                    <?php esc_html_e( 'before setting up sync options.', 'sap-woo-suite-lite' ); ?>
+                    <strong><?php esc_html_e( 'Configure your SAP connection first', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                    <?php esc_html_e( 'before setting up sync options.', 'replanta-connector-sap-woocommerce' ); ?>
                 </p>
             </div>
             <?php
@@ -355,8 +355,8 @@ class SAPWC_Lite_Settings_Page {
 
         <div class="sapwc-info-box">
             <p style="margin:0;">
-                <strong><?php esc_html_e( 'How sync works:', 'sap-woo-suite-lite' ); ?></strong>
-                <?php esc_html_e( 'Products are matched by SKU (WooCommerce SKU = SAP ItemCode). Once configured, stock and prices sync on your chosen schedule -- set it and forget it.', 'sap-woo-suite-lite' ); ?>
+                <strong><?php esc_html_e( 'How sync works:', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                <?php esc_html_e( 'Products are matched by SKU (WooCommerce SKU = SAP ItemCode). Once configured, stock and prices sync on your chosen schedule -- set it and forget it.', 'replanta-connector-sap-woocommerce' ); ?>
             </p>
         </div>
 
@@ -365,14 +365,14 @@ class SAPWC_Lite_Settings_Page {
             <input type="hidden" name="sapwc_lite_save" value="1">
             <input type="hidden" name="sapwc_lite_tab" value="sync">
 
-            <h2><?php esc_html_e( 'Sync Configuration', 'sap-woo-suite-lite' ); ?></h2>
+            <h2><?php esc_html_e( 'Sync Configuration', 'replanta-connector-sap-woocommerce' ); ?></h2>
 
             <table class="form-table">
                 <tr>
-                    <th><label for="price_list"><?php esc_html_e( 'Price List', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="price_list"><?php esc_html_e( 'Price List', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <select id="price_list" name="price_list" <?php echo esc_attr( empty( $price_lists ) ? 'disabled' : '' ); ?>>
-                            <option value=""><?php esc_html_e( '-- Select Price List --', 'sap-woo-suite-lite' ); ?></option>
+                            <option value=""><?php esc_html_e( '-- Select Price List --', 'replanta-connector-sap-woocommerce' ); ?></option>
                             <?php foreach ( $price_lists as $pl ) : ?>
                                 <option value="<?php echo esc_attr( $pl['id'] ); ?>"
                                         <?php selected( $selected_tariff, $pl['id'] ); ?>>
@@ -382,13 +382,13 @@ class SAPWC_Lite_Settings_Page {
                         </select>
                         <?php if ( empty( $price_lists ) && $conn ) : ?>
                             <p class="description" style="color:#dc3545;">
-                                <?php esc_html_e( 'Could not load price lists. Check your connection.', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Could not load price lists. Check your connection.', 'replanta-connector-sap-woocommerce' ); ?>
                             </p>
                         <?php endif; ?>
                     </td>
                 </tr>
                 <tr>
-                    <th><label><?php esc_html_e( 'Warehouses', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label><?php esc_html_e( 'Warehouses', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <?php if ( ! empty( $warehouses_list ) ) : ?>
                             <?php foreach ( $warehouses_list as $wh ) : ?>
@@ -400,44 +400,44 @@ class SAPWC_Lite_Settings_Page {
                                 </label>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <p class="description"><?php esc_html_e( 'Connect to SAP to load warehouses.', 'sap-woo-suite-lite' ); ?></p>
+                            <p class="description"><?php esc_html_e( 'Connect to SAP to load warehouses.', 'replanta-connector-sap-woocommerce' ); ?></p>
                         <?php endif; ?>
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e( 'What to Sync', 'sap-woo-suite-lite' ); ?></th>
+                    <th><?php esc_html_e( 'What to Sync', 'replanta-connector-sap-woocommerce' ); ?></th>
                     <td>
                         <label style="display:block;margin-bottom:8px;">
                             <input type="checkbox" name="sync_stock" value="1"
                                    <?php checked( $sync_stock, '1' ); ?>>
-                            <strong><?php esc_html_e( 'Sync Stock', 'sap-woo-suite-lite' ); ?></strong>
-                            - <?php esc_html_e( 'Keep WooCommerce stock in sync with SAP', 'sap-woo-suite-lite' ); ?>
+                            <strong><?php esc_html_e( 'Sync Stock', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                            - <?php esc_html_e( 'Keep WooCommerce stock in sync with SAP', 'replanta-connector-sap-woocommerce' ); ?>
                         </label>
                         <label style="display:block;margin-bottom:8px;">
                             <input type="checkbox" name="sync_prices" value="1"
                                    <?php checked( $sync_prices, '1' ); ?>>
-                            <strong><?php esc_html_e( 'Sync Prices', 'sap-woo-suite-lite' ); ?></strong>
-                            - <?php esc_html_e( 'Keep prices updated from your SAP price list', 'sap-woo-suite-lite' ); ?>
+                            <strong><?php esc_html_e( 'Sync Prices', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                            - <?php esc_html_e( 'Keep prices updated from your SAP price list', 'replanta-connector-sap-woocommerce' ); ?>
                         </label>
 
                         <!-- Locked PRO sync options -->
                         <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--sapwc-gray-200, #e2e8f0);">
                             <label style="display:block;margin-bottom:8px; opacity:0.5; cursor:not-allowed;">
                                 <input type="checkbox" disabled>
-                                <strong><?php esc_html_e( 'Sync Orders', 'sap-woo-suite-lite' ); ?></strong>
-                                - <?php esc_html_e( 'Send orders to SAP as Sales Orders', 'sap-woo-suite-lite' ); ?>
+                                <strong><?php esc_html_e( 'Sync Orders', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                                - <?php esc_html_e( 'Send orders to SAP as Sales Orders', 'replanta-connector-sap-woocommerce' ); ?>
                                 <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
                             </label>
                             <label style="display:block;margin-bottom:8px; opacity:0.5; cursor:not-allowed;">
                                 <input type="checkbox" disabled>
-                                <strong><?php esc_html_e( 'Sync Customers', 'sap-woo-suite-lite' ); ?></strong>
-                                - <?php esc_html_e( 'Create Business Partners in SAP from customers', 'sap-woo-suite-lite' ); ?>
+                                <strong><?php esc_html_e( 'Sync Customers', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                                - <?php esc_html_e( 'Create Business Partners in SAP from customers', 'replanta-connector-sap-woocommerce' ); ?>
                                 <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
                             </label>
                             <label style="display:block; opacity:0.5; cursor:not-allowed;">
                                 <input type="checkbox" disabled>
-                                <strong><?php esc_html_e( 'Import Products', 'sap-woo-suite-lite' ); ?></strong>
-                                - <?php esc_html_e( 'Import products from SAP with images and attributes', 'sap-woo-suite-lite' ); ?>
+                                <strong><?php esc_html_e( 'Import Products', 'replanta-connector-sap-woocommerce' ); ?></strong>
+                                - <?php esc_html_e( 'Import products from SAP with images and attributes', 'replanta-connector-sap-woocommerce' ); ?>
                                 <span style="color:#41999f; font-weight:600; font-size:11px; margin-left:4px;">PRO</span>
                             </label>
                         </div>
@@ -445,39 +445,39 @@ class SAPWC_Lite_Settings_Page {
                 </tr>
             </table>
 
-            <h2><?php esc_html_e( 'Automatic Sync', 'sap-woo-suite-lite' ); ?></h2>
+            <h2><?php esc_html_e( 'Automatic Sync', 'replanta-connector-sap-woocommerce' ); ?></h2>
 
             <table class="form-table">
                 <tr>
-                    <th><label for="sync_interval"><?php esc_html_e( 'Sync Interval', 'sap-woo-suite-lite' ); ?></label></th>
+                    <th><label for="sync_interval"><?php esc_html_e( 'Sync Interval', 'replanta-connector-sap-woocommerce' ); ?></label></th>
                     <td>
                         <select id="sync_interval" name="sync_interval">
                             <option value="hourly" <?php selected( $interval, 'hourly' ); ?>>
-                                <?php esc_html_e( 'Every Hour', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Every Hour', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                             <option value="twicedaily" <?php selected( $interval, 'twicedaily' ); ?>>
-                                <?php esc_html_e( 'Twice Daily', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Twice Daily', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                             <option value="daily" <?php selected( $interval, 'daily' ); ?>>
-                                <?php esc_html_e( 'Daily', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Daily', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                             <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Every 15 minutes -- PRO', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Every 15 minutes -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                             <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Every 5 minutes -- PRO', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Every 5 minutes -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                             <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Real-time (webhook) -- PRO', 'sap-woo-suite-lite' ); ?>
+                                <?php esc_html_e( 'Real-time (webhook) -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
                         </select>
                         <p class="description">
-                            <?php esc_html_e( 'Syncs run on this schedule. Set it and forget it.', 'sap-woo-suite-lite' ); ?>
+                            <?php esc_html_e( 'Syncs run on this schedule. Set it and forget it.', 'replanta-connector-sap-woocommerce' ); ?>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e( 'Last Sync', 'sap-woo-suite-lite' ); ?></th>
+                    <th><?php esc_html_e( 'Last Sync', 'replanta-connector-sap-woocommerce' ); ?></th>
                     <td>
                         <strong><?php echo esc_html( $last_sync ); ?></strong>
                     </td>
@@ -486,29 +486,29 @@ class SAPWC_Lite_Settings_Page {
 
             <p class="submit">
                 <button type="submit" class="button button-primary">
-                    <?php esc_html_e( 'Save Sync Settings', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Save Sync Settings', 'replanta-connector-sap-woocommerce' ); ?>
                 </button>
                 <button type="button" id="sapwc-lite-sync-now" class="button" <?php echo esc_attr( ! $conn ? 'disabled' : '' ); ?>>
-                    <?php esc_html_e( 'Sync Now', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'Sync Now', 'replanta-connector-sap-woocommerce' ); ?>
                 </button>
                 <span id="sapwc-lite-sync-result"></span>
             </p>
         </form>
 
         <div class="sapwc-lite-pro-features-preview">
-            <h3><?php esc_html_e( 'Want to sync more than stock and prices?', 'sap-woo-suite-lite' ); ?></h3>
+            <h3><?php esc_html_e( 'Want to sync more than stock and prices?', 'replanta-connector-sap-woocommerce' ); ?></h3>
             <p style="margin-bottom:12px; color: var(--sapwc-gray-600, #475569);">
-                <?php esc_html_e( 'With PRO, orders, products, customers and more also sync with SAP. Set it up once, it just works.', 'sap-woo-suite-lite' ); ?>
+                <?php esc_html_e( 'With PRO, orders, products, customers and more also sync with SAP. Set it up once, it just works.', 'replanta-connector-sap-woocommerce' ); ?>
             </p>
             <ul>
-                <li><strong><?php esc_html_e( 'Full Product Import', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Products created and updated from SAP', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Order Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Every order flows to SAP as a Sales Order', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Customer Sync', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Business Partners created from WooCommerce customers', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Field Mapping', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Map any SAP field to WooCommerce attributes', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Smart Retry', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'Failed syncs retry with intelligent backoff', 'sap-woo-suite-lite' ); ?></li>
-                <li><strong><?php esc_html_e( 'Multi-channel', 'sap-woo-suite-lite' ); ?></strong> - <?php esc_html_e( 'TikTok Shop, Amazon, Miravia included', 'sap-woo-suite-lite' ); ?></li>
+                <li><strong><?php esc_html_e( 'Full Product Import', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'Products created and updated from SAP', 'replanta-connector-sap-woocommerce' ); ?></li>
+                <li><strong><?php esc_html_e( 'Order Sync', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'Every order flows to SAP as a Sales Order', 'replanta-connector-sap-woocommerce' ); ?></li>
+                <li><strong><?php esc_html_e( 'Customer Sync', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'Business Partners created from WooCommerce customers', 'replanta-connector-sap-woocommerce' ); ?></li>
+                <li><strong><?php esc_html_e( 'Field Mapping', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'Map any SAP field to WooCommerce attributes', 'replanta-connector-sap-woocommerce' ); ?></li>
+                <li><strong><?php esc_html_e( 'Smart Retry', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'Failed syncs retry with intelligent backoff', 'replanta-connector-sap-woocommerce' ); ?></li>
+                <li><strong><?php esc_html_e( 'Multi-channel', 'replanta-connector-sap-woocommerce' ); ?></strong> - <?php esc_html_e( 'TikTok Shop, Amazon, Miravia included', 'replanta-connector-sap-woocommerce' ); ?></li>
             </ul>
-            <a href="?page=sapwc-lite-pro" class="button"><?php esc_html_e( 'See All PRO Features', 'sap-woo-suite-lite' ); ?></a>
+            <a href="?page=sapwc-lite-pro" class="button"><?php esc_html_e( 'See All PRO Features', 'replanta-connector-sap-woocommerce' ); ?></a>
         </div>
         <?php
     }
@@ -520,21 +520,21 @@ class SAPWC_Lite_Settings_Page {
         $logs = SAPWC_Lite_Logger::get_logs( 100 );
         ?>
         <div class="wrap sapwc-wrap">
-            <h1><?php esc_html_e( 'SAP Woo Suite Lite - Logs', 'sap-woo-suite-lite' ); ?></h1>
+            <h1><?php esc_html_e( 'Replanta Connector - Logs', 'replanta-connector-sap-woocommerce' ); ?></h1>
 
             <table class="widefat striped">
                 <thead>
                     <tr>
-                        <th><?php esc_html_e( 'Date', 'sap-woo-suite-lite' ); ?></th>
-                        <th><?php esc_html_e( 'Action', 'sap-woo-suite-lite' ); ?></th>
-                        <th><?php esc_html_e( 'Status', 'sap-woo-suite-lite' ); ?></th>
-                        <th><?php esc_html_e( 'Message', 'sap-woo-suite-lite' ); ?></th>
+                        <th><?php esc_html_e( 'Date', 'replanta-connector-sap-woocommerce' ); ?></th>
+                        <th><?php esc_html_e( 'Action', 'replanta-connector-sap-woocommerce' ); ?></th>
+                        <th><?php esc_html_e( 'Status', 'replanta-connector-sap-woocommerce' ); ?></th>
+                        <th><?php esc_html_e( 'Message', 'replanta-connector-sap-woocommerce' ); ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ( empty( $logs ) ) : ?>
                         <tr>
-                            <td colspan="4"><?php esc_html_e( 'No logs yet.', 'sap-woo-suite-lite' ); ?></td>
+                            <td colspan="4"><?php esc_html_e( 'No logs yet.', 'replanta-connector-sap-woocommerce' ); ?></td>
                         </tr>
                     <?php else : ?>
                         <?php foreach ( $logs as $log ) : ?>
@@ -554,12 +554,12 @@ class SAPWC_Lite_Settings_Page {
             </table>
 
             <div class="sapwc-lite-pro-features-preview" style="margin-top:20px;">
-                <h3><?php esc_html_e( 'Need advanced log management?', 'sap-woo-suite-lite' ); ?></h3>
+                <h3><?php esc_html_e( 'Need advanced log management?', 'replanta-connector-sap-woocommerce' ); ?></h3>
                 <p style="margin-bottom:8px; color: var(--sapwc-gray-600, #475569);">
-                    <?php esc_html_e( 'SAP Woo Suite PRO includes filtering by date and action, CSV export, log cleanup, and a visual analytics dashboard.', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'SAP Woo Suite PRO includes filtering by date and action, CSV export, log cleanup, and a visual analytics dashboard.', 'replanta-connector-sap-woocommerce' ); ?>
                 </p>
                 <a href="<?php echo esc_url( admin_url( 'admin.php?page=sapwc-lite-pro' ) ); ?>" class="button">
-                    <?php esc_html_e( 'See PRO Features', 'sap-woo-suite-lite' ); ?>
+                    <?php esc_html_e( 'See PRO Features', 'replanta-connector-sap-woocommerce' ); ?>
                 </a>
             </div>
         </div>
