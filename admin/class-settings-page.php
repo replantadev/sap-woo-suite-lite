@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Admin Settings Page for Replanta Connector with SAP for WooCommerce
  * Uses PRO-compatible option names for seamless upgrade

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * PRO Features Page - Shows blocked features with upgrade prompts
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dashboard Page for Replanta Connector with SAP for WooCommerce
  *

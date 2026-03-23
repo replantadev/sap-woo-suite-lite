@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Uninstall Replanta Connector with SAP for WooCommerce
  *

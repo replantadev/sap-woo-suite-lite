@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * SAP Business One Service Layer API Client (Lite)
  * 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Spanish (Spain) translations for SAP Woo Suite Lite.
  *

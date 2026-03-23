@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Stock and Price Sync for Replanta Connector with SAP for WooCommerce
  *

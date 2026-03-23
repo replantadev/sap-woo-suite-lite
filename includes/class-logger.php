@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Simple Logger for Replanta Connector with SAP for WooCommerce
  *
