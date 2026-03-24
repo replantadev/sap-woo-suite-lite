@@ -1,11 +1,11 @@
-﻿=== Replanta Connector with SAP for WooCommerce ===
+=== Replanta Connector with SAP for WooCommerce ===
 Contributors: replanta
 Donate link: https://replanta.net/
 Tags: sap, sap business one, woocommerce, erp, inventory
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.17
+Stable tag: 1.2.18
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

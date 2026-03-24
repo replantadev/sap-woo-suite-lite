@@ -68,7 +68,7 @@ class SAPWC_Lite_Settings_Page {
             $connection = array(
                 'url'  => isset( $_POST['sap_url'] ) ? esc_url_raw( rtrim( sanitize_text_field( wp_unslash( $_POST['sap_url'] ) ), '/' ) ) : '',
                 'user' => isset( $_POST['sap_user'] ) ? sanitize_text_field( wp_unslash( $_POST['sap_user'] ) ) : '',
-                'pass' => isset( $_POST['sap_pass'] ) ? wp_unslash( $_POST['sap_pass'] ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                'pass' => isset( $_POST['sap_pass'] ) ? sanitize_text_field( wp_unslash( $_POST['sap_pass'] ) ) : '',
                 'db'   => isset( $_POST['sap_db'] ) ? sanitize_text_field( wp_unslash( $_POST['sap_db'] ) ) : '',
                 'ssl'  => isset( $_POST['sap_ssl'] ) && '1' === sanitize_text_field( wp_unslash( $_POST['sap_ssl'] ) ),
             );
@@ -461,15 +461,7 @@ class SAPWC_Lite_Settings_Page {
                             <option value="daily" <?php selected( $interval, 'daily' ); ?>>
                                 <?php esc_html_e( 'Daily', 'replanta-connector-sap-woocommerce' ); ?>
                             </option>
-                            <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Every 15 minutes -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
-                            </option>
-                            <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Every 5 minutes -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
-                            </option>
-                            <option disabled style="color:#41999f;">
-                                <?php esc_html_e( 'Real-time (webhook) -- PRO', 'replanta-connector-sap-woocommerce' ); ?>
-                            </option>
+
                         </select>
                         <p class="description">
                             <?php esc_html_e( 'Syncs run on this schedule. Set it and forget it.', 'replanta-connector-sap-woocommerce' ); ?>
@@ -517,10 +509,32 @@ class SAPWC_Lite_Settings_Page {
      * Render logs page
      */
     public function render_logs_page() {
-        $logs = SAPWC_Lite_Logger::get_logs( 100 );
+        $filter_action = isset( $_GET['sapwc_log_action'] ) ? sanitize_text_field( wp_unslash( $_GET['sapwc_log_action'] ) ) : '';
+        $filter_status = isset( $_GET['sapwc_log_status'] ) ? sanitize_text_field( wp_unslash( $_GET['sapwc_log_status'] ) ) : '';
+        $logs = SAPWC_Lite_Logger::get_logs( 100, $filter_action ?: null, $filter_status ?: null );
         ?>
         <div class="wrap sapwc-wrap">
             <h1><?php esc_html_e( 'Replanta Connector - Logs', 'replanta-connector-sap-woocommerce' ); ?></h1>
+
+            <form method="get" style="margin-bottom:16px;">
+                <input type="hidden" name="page" value="sapwc-lite-logs">
+                <select name="sapwc_log_action">
+                    <option value=""><?php esc_html_e( 'All actions', 'replanta-connector-sap-woocommerce' ); ?></option>
+                    <?php foreach ( array( 'stock_sync', 'price_sync', 'connection' ) as $act ) : ?>
+                        <option value="<?php echo esc_attr( $act ); ?>" <?php selected( $filter_action, $act ); ?>><?php echo esc_html( $act ); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="sapwc_log_status">
+                    <option value=""><?php esc_html_e( 'All statuses', 'replanta-connector-sap-woocommerce' ); ?></option>
+                    <?php foreach ( array( 'success', 'error', 'warning', 'info' ) as $st ) : ?>
+                        <option value="<?php echo esc_attr( $st ); ?>" <?php selected( $filter_status, $st ); ?>><?php echo esc_html( $st ); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit" class="button"><?php esc_html_e( 'Filter', 'replanta-connector-sap-woocommerce' ); ?></button>
+                <?php if ( $filter_action || $filter_status ) : ?>
+                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=sapwc-lite-logs' ) ); ?>" class="button"><?php esc_html_e( 'Clear', 'replanta-connector-sap-woocommerce' ); ?></a>
+                <?php endif; ?>
+            </form>
 
             <table class="widefat striped">
                 <thead>
@@ -553,15 +567,7 @@ class SAPWC_Lite_Settings_Page {
                 </tbody>
             </table>
 
-            <div class="sapwc-lite-pro-features-preview" style="margin-top:20px;">
-                <h3><?php esc_html_e( 'Need advanced log management?', 'replanta-connector-sap-woocommerce' ); ?></h3>
-                <p style="margin-bottom:8px; color: var(--sapwc-gray-600, #475569);">
-                    <?php esc_html_e( 'SAP Woo Suite PRO includes filtering by date and action, CSV export, log cleanup, and a visual analytics dashboard.', 'replanta-connector-sap-woocommerce' ); ?>
-                </p>
-                <a href="<?php echo esc_url( admin_url( 'admin.php?page=sapwc-lite-pro' ) ); ?>" class="button">
-                    <?php esc_html_e( 'See PRO Features', 'replanta-connector-sap-woocommerce' ); ?>
-                </a>
-            </div>
+
         </div>
         <?php
     }
