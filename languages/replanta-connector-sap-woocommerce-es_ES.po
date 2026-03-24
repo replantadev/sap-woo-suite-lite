@@ -1,12 +1,12 @@
-# Spanish (Spain) translation for SAP Woo Suite Lite
-# Copyright (C) 2024 Replanta
+# Spanish (Spain) translation for Replanta Connector with SAP for WooCommerce
+# Copyright (C) 2026 Replanta
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: SAP Woo Suite Lite 1.0.0\n"
+"Project-Id-Version: Replanta Connector with SAP for WooCommerce 1.2.19\n"
 "Report-Msgid-Bugs-To: https://replanta.net/contacto/\n"
-"POT-Creation-Date: 2024-01-01 00:00+0000\n"
-"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"POT-Creation-Date: 2026-03-24 00:00+0000\n"
+"PO-Revision-Date: 2026-03-24 00:00+0000\n"
 "Last-Translator: Replanta <info@replanta.net>\n"
 "Language-Team: Spanish <info@replanta.net>\n"
 "Language: es_ES\n"

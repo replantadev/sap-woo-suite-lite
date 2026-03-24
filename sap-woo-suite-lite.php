@@ -13,7 +13,7 @@
  * Plugin Name:       Replanta Connector with SAP for WooCommerce
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
- * Version: 1.2.18
+ * Version: 1.2.19
  * Requires at least: 5.8
  * Tested up to:      6.9
  * Requires PHP:      7.4
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ──────────────────────────────────────────────
 // Constants
 // ──────────────────────────────────────────────
-define( 'SAPWC_LITE_VERSION', '1.2.18' );
+define( 'SAPWC_LITE_VERSION', '1.2.19' );
 define( 'SAPWC_LITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SAPWC_LITE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SAPWC_LITE_FILE', __FILE__ );

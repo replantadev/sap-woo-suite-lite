@@ -1,11 +1,11 @@
 <?php
 /**
- * Spanish (Spain) translations for SAP Woo Suite Lite.
+ * Spanish (Spain) translations for Replanta Connector with SAP for WooCommerce.
  *
  * WordPress 6.5+ PHP translation file format (.l10n.php).
  *
  * @package SAPWC_Lite
- * @since   1.2.0
+ * @since   1.2.19
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -220,12 +220,6 @@ return array(
             => 'Cada hora',
         'Twice Daily'
             => '2 veces al dia',
-        'Every 15 minutes -- PRO'
-            => 'Cada 15 minutos -- PRO',
-        'Every 5 minutes -- PRO'
-            => 'Cada 5 minutos -- PRO',
-        'Real-time (webhook) -- PRO'
-            => 'Tiempo real (webhook) -- PRO',
         'Syncs run on this schedule. Set it and forget it.'
             => 'Los syncs se ejecutan segun esta programacion. Configuralo y olvidate.',
         'Save Sync Settings'
