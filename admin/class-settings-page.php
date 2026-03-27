@@ -175,6 +175,7 @@ class SAPWC_Lite_Settings_Page {
                     'syncing'           => __( 'Syncing...', 'replanta-connector-sap-woocommerce' ),
                     'products_updated'  => __( 'products updated', 'replanta-connector-sap-woocommerce' ),
                     'sync_failed'       => __( 'Sync failed', 'replanta-connector-sap-woocommerce' ),
+                    'pro_tip'           => __( 'PRO Tip:', 'replanta-connector-sap-woocommerce' ),
                     'go_pro'            => __( 'Upgrade to PRO', 'replanta-connector-sap-woocommerce' ),
                 ),
             )

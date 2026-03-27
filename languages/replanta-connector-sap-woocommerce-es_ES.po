@@ -68,6 +68,10 @@ msgid "Sync failed"
 msgstr "Sincronización fallida"
 
 #: admin/class-settings-page.php
+msgid "PRO Tip:"
+msgstr "Consejo PRO:"
+
+#: admin/class-settings-page.php
 msgid "Unlock Full Power with PRO"
 msgstr "Desbloquea todo el potencial con PRO"
 

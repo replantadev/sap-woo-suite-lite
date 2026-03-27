@@ -58,6 +58,22 @@ add_action( 'before_woocommerce_init', 'sapwc_lite_declare_hpos_compatibility' )
 // Bundled .l10n.php files are also picked up without load_plugin_textdomain().
 
 /**
+ * Load plugin translations.
+ *
+ * Explicit loading helps both local environments and bundled language files.
+ *
+ * @since 1.2.20
+ */
+function sapwc_lite_load_textdomain() {
+    load_plugin_textdomain(
+        'replanta-connector-sap-woocommerce',
+        false,
+        dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+    );
+}
+add_action( 'plugins_loaded', 'sapwc_lite_load_textdomain', 1 );
+
+/**
  * Check if PRO version is active and deactivate Lite.
  *
  * @since 1.0.0
