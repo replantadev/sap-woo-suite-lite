@@ -1,6 +1,6 @@
 <?php
 /**
- * Dashboard Page for Replanta Connector with SAP for WooCommerce
+ * Dashboard Page for WooCommerce Connector for SAP Business One
  *
  * Visual overview of sync status, product health, and recent activity.
  * Designed to match the PRO design system while staying within Lite scope.
@@ -32,7 +32,7 @@ class SAPWC_Lite_Dashboard_Page {
 
         /* ── Top-level menu ── */
         add_menu_page(
-            __( 'Replanta Connector', 'replanta-connector-sap-woocommerce' ),
+            __( 'WooCommerce Connector for SAP Business One', 'replanta-connector-sap-woocommerce' ),
             __( 'SAP Woo Lite', 'replanta-connector-sap-woocommerce' ),
             'manage_woocommerce',
             'sapwc-lite',

@@ -1,4 +1,4 @@
-=== Replanta Connector with SAP for WooCommerce ===
+=== WooCommerce Connector for SAP Business One ===
 Contributors: replanta
 Donate link: https://replanta.net/
 Tags: sap, sap business one, woocommerce, erp, stock sync
@@ -13,7 +13,7 @@ Sync WooCommerce stock and prices with SAP Business One via Service Layer. Autom
 
 == Description ==
 
-**Replanta Connector with SAP for WooCommerce** is the easiest way to keep your WooCommerce store in sync with SAP Business One. Connect via the SAP Service Layer API, choose your price list and warehouses, enable sync -- done.
+**WooCommerce Connector for SAP Business One** is the easiest way to keep your WooCommerce store in sync with SAP Business One. Connect via the SAP Service Layer API, choose your price list and warehouses, enable sync -- done.
 
 No middleware. No complex setup. No recurring manual work.
 
@@ -134,7 +134,7 @@ Post in the [support forum](https://wordpress.org/support/plugin/replanta-connec
 * Exposed log action/status filters in the Lite logs page (were incorrectly marked as PRO-only)
 
 = 1.2.17 =
-* Rename: Plugin renamed to Replanta Connector with SAP for WooCommerce for WordPress.org compliance
+* Rename: Plugin renamed to WooCommerce Connector for SAP Business One for WordPress.org compliance
 
 = 1.2.3 - 2026-03-05 =
 * Fixed license file to match GPL-2.0-or-later declaration
@@ -181,7 +181,7 @@ Important fix: Spanish translations now load correctly. Update recommended for a
 Security and guideline compliance update. Update recommended.
 
 = 1.2.17 =
-Plugin renamed to Replanta Connector with SAP for WooCommerce for WordPress.org compliance. No configuration changes required.
+Plugin renamed to WooCommerce Connector for SAP Business One for WordPress.org compliance. No configuration changes required.
 
 = 1.2.3 =
 Coding standards and license compliance improvements for WP.org submission.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Settings Page for Replanta Connector with SAP for WooCommerce
+ * Admin Settings Page for WooCommerce Connector for SAP Business One
  * Uses PRO-compatible option names for seamless upgrade
  *
  * @package SAPWC_Lite
@@ -194,7 +194,7 @@ class SAPWC_Lite_Settings_Page {
         ?>
         <div class="wrap sapwc-wrap">
             <h1>
-                <span class="sapwc-lite-logo">Replanta Connector</span>
+                <span class="sapwc-lite-logo">WooCommerce Connector for SAP Business One</span>
                 <span class="sapwc-lite-version">v<?php echo esc_html( SAPWC_LITE_VERSION ); ?></span>
             </h1>
 
@@ -515,7 +515,7 @@ class SAPWC_Lite_Settings_Page {
         $logs = SAPWC_Lite_Logger::get_logs( 100, $filter_action ?: null, $filter_status ?: null );
         ?>
         <div class="wrap sapwc-wrap">
-            <h1><?php esc_html_e( 'Replanta Connector - Logs', 'replanta-connector-sap-woocommerce' ); ?></h1>
+            <h1><?php esc_html_e( 'WooCommerce Connector for SAP Business One - Logs', 'replanta-connector-sap-woocommerce' ); ?></h1>
 
             <form method="get" style="margin-bottom:16px;">
                 <input type="hidden" name="page" value="sapwc-lite-logs">

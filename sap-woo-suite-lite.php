@@ -1,6 +1,6 @@
 <?php
 /**
- * Replanta Connector with SAP for WooCommerce
+ * WooCommerce Connector for SAP Business One
  *
  * Connect WooCommerce with SAP Business One for stock and price synchronization.
  *
@@ -10,10 +10,10 @@
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name:       Replanta Connector with SAP for WooCommerce
+ * Plugin Name:       WooCommerce Connector for SAP Business One
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
- * Version: 1.2.43
+ * Version: 1.2.44
  * Requires at least: 5.8
  * Tested up to:      7.0
  * Requires PHP:      8.0
@@ -99,7 +99,7 @@ function sapwc_lite_pro_active_notice() {
     ?>
     <div class="notice notice-success is-dismissible">
         <p>
-            <strong><?php esc_html_e( 'Replanta Connector', 'replanta-connector-sap-woocommerce' ); ?></strong>
+            <strong><?php esc_html_e( 'WooCommerce Connector for SAP Business One', 'replanta-connector-sap-woocommerce' ); ?></strong>
             <?php esc_html_e( 'has been deactivated. You have the PRO version active - all your settings have been preserved!', 'replanta-connector-sap-woocommerce' ); ?>
         </p>
     </div>
@@ -168,7 +168,7 @@ function sapwc_lite_load_dependencies() {
     SAPWC_Lite_Stock_Sync::init();
 
     /**
-     * Fires when Replanta Connector with SAP for WooCommerce is fully loaded.
+    * Fires when WooCommerce Connector for SAP Business One is fully loaded.
      *
      * @since 1.0.0
      * @param string $version Plugin version.
@@ -178,7 +178,7 @@ function sapwc_lite_load_dependencies() {
 add_action( 'plugins_loaded', 'sapwc_lite_load_dependencies' );
 
 /**
- * Hide other plugin notices on Replanta Connector with SAP for WooCommerce admin pages.
+ * Hide other plugin notices on WooCommerce Connector for SAP Business One admin pages.
  *
  * @since 1.0.0
  */
@@ -218,7 +218,7 @@ function sapwc_lite_woocommerce_missing_notice() {
     ?>
     <div class="notice notice-error">
         <p>
-            <strong><?php esc_html_e( 'Replanta Connector', 'replanta-connector-sap-woocommerce' ); ?></strong>
+            <strong><?php esc_html_e( 'WooCommerce Connector for SAP Business One', 'replanta-connector-sap-woocommerce' ); ?></strong>
             <?php esc_html_e( 'requires WooCommerce to be installed and activated.', 'replanta-connector-sap-woocommerce' ); ?>
         </p>
     </div>

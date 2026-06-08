@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://replanta.net/wp-content/uploads/2026/03/sapwoosuite-ico.png" alt="SAP Woo Suite Lite" width="100">
+  <img src="https://replanta.net/wp-content/uploads/2026/03/sapwoosuite-ico.png" alt="Conector de WooCommerce para SAP Business One" width="100">
 </p>
 
-<h1 align="center">SAP Woo Suite Lite</h1>
+<h1 align="center">Conector de WooCommerce para SAP Business One (Lite)</h1>
 
 <p align="center">
   <strong>Integración gratuita con SAP Business One</strong><br>
@@ -22,7 +22,7 @@
 
 ## Descripción
 
-**SAP Woo Suite Lite** es la versión gratuita del conector entre WooCommerce y SAP Business One. Permite sincronizar stock y precios desde SAP a tu tienda WooCommerce de forma automática.
+**Conector de WooCommerce para SAP Business One (Lite)** es la versión gratuita del conector entre WooCommerce y SAP Business One. Permite sincronizar stock y precios desde SAP a tu tienda WooCommerce de forma automática.
 
 ### Características
 
@@ -64,7 +64,7 @@ Actualiza a [SAP Woo Suite PRO](https://replanta.net/conector-sap-woocommerce/) 
 ### Desde WordPress.org
 
 1. Ve a **Plugins → Añadir nuevo**
-2. Busca "SAP Woo Suite Lite"
+2. Busca "WooCommerce Connector for SAP Business One"
 3. Haz clic en **Instalar ahora**
 4. Activa el plugin
 
@@ -79,7 +79,7 @@ Actualiza a [SAP Woo Suite PRO](https://replanta.net/conector-sap-woocommerce/) 
 
 ## Configuración
 
-1. Ve a **SAP Woo Suite Lite** en el menú de WordPress
+1. Ve a **WooCommerce Connector for SAP Business One** en el menú de WordPress
 2. Configura la conexión a SAP:
    - URL del Service Layer
    - Base de datos SAP
