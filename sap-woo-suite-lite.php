@@ -13,7 +13,7 @@
  * Plugin Name:       WooCommerce Connector for SAP Business One
  * Plugin URI:        https://replanta.net/conector-sap-woocommerce/
  * Description:       Connect your WooCommerce store with SAP Business One. Stock and prices stay in sync via Service Layer. Upgrade to PRO for orders, products, customers and multi-channel.
- * Version: 1.2.46
+ * Version: 1.2.47
  * Requires at least: 5.8
  * Tested up to:      7.0
  * Requires PHP:      8.0
